@@ -9,7 +9,7 @@ export type AppConfig = {
 }
 
 const appConfig: AppConfig = {
-  layoutType: LayoutTypes.CollapsedSideBar,
+  layoutType: LayoutTypes.SimpleSideBar,
   apiPrefix: 'https://life-kinetics.bloxima.com/',
   authenticatedEntryPath: '/dashboard',
   unAuthenticatedEntryPath: '/sign-in',

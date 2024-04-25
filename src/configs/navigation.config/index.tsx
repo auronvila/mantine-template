@@ -9,7 +9,15 @@ const navigationConfig: NavigationTree[] = [
     translateKey: 'nav.dashboard',
     icon: IconDashboard,
     authority: [],
-    // subMenu: []
+    subMenu: [
+      {
+        title:'aaa',
+        path:'/aaa',
+        key:'aaa',
+        translateKey:'aaa'
+      },
+
+    ]
   },
   {
     key: 'users',
