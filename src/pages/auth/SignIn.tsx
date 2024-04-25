@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {
   Paper,
   TextInput,
@@ -17,6 +17,7 @@ import {AuthService} from "@/services/auth/auth.service";
 import useAuth from "@/utils/hooks/useAuth";
 
 export default function SignIn() {
+  const [loading, setLoading] = useState<boolean>(false)
   const {signIn} = useAuth()
   const schema = yup.object().shape({
     email: yup
@@ -29,7 +30,6 @@ export default function SignIn() {
   });
 
   const form = useForm({
-
     initialValues: {
       email: '',
       password: '',
@@ -38,11 +38,14 @@ export default function SignIn() {
   });
 
   async function handleSubmit(values: { email: string, password: string }) {
+    setLoading(true)
     try {
       const res = await signIn(values)
       console.log(res)
     } catch (e) {
       console.log(e)
+    } finally {
+      setLoading(false)
     }
   }
 
