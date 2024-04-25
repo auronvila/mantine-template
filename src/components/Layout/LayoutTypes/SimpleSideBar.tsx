@@ -2,7 +2,7 @@ import {SideBar} from "@/components/Layout/SideBar";
 import React from "react";
 import Views from "@/components/Layout/Views";
 
-export default function AppLayout(){
+export default function SimpleSideBar(){
   return (
     <div style={{display: 'flex', flex: ' 1 1 auto'}}>
       <SideBar/>

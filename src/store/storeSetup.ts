@@ -18,10 +18,8 @@ import {
 import storage from 'redux-persist/lib/storage'
 import {PERSIST_STORE_NAME} from '@/constants/app.constant'
 import rootReducer, {RootState, AsyncReducers} from './rootReducer'
-import RtkQueryService from '@/services/RtkQueryService'
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
-const middlewares: any[] = [RtkQueryService.middleware]
 
 const persistConfig = {
   key: PERSIST_STORE_NAME,
@@ -42,7 +40,7 @@ const store: CustomStore = configureStore({
       serializableCheck: {
         ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
       },
-    }).concat(middlewares),
+    }),
   devTools: process.env.NODE_ENV === 'development',
 })
 

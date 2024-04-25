@@ -13,8 +13,9 @@ import Lottie from 'react-lottie';
 import animationData from '../../../public/animation/sign-in-anim.json';
 import * as yup from 'yup';
 import {useForm, yupResolver} from "@mantine/form";
-import {AuthService} from "@/services/auth/auth.service";
 import useAuth from "@/utils/hooks/useAuth";
+import {Simulate} from "react-dom/test-utils";
+import load = Simulate.load;
 
 export default function SignIn() {
   const [loading, setLoading] = useState<boolean>(false)
@@ -70,7 +71,7 @@ export default function SignIn() {
                      placeholder="hello@gmail.com" size="md"/>
           <PasswordInput {...form.getInputProps('password')} name={'password'} label="Password"
                          placeholder="Your password" mt="md" size="md"/>
-          <Button type={'submit'} fullWidth mt="xl" size="md">
+          <Button loading={loading} type={'submit'} fullWidth mt="xl" size="md">
             Login
           </Button>
           {/*<Text ta="center" mt="md">*/}
