@@ -1,0 +1,111 @@
+{
+  "nav.dashboard": "Panel",
+  "nav.changePassword": "Parola Değiştir",
+  "nav.logOut": "Çıkış yap",
+  "nav.products": "ürünler",
+  "nav.2fa": "2FA'yi Etkinleştir",
+  "nav.disable2fa": "2FA'yı Devre Dışı Bırak",
+  "changePassword": {
+    "successfullyChangedInfoMessage": "Parolanız başarıyla değiştirilmiştir, sizi sign-in sayfasına yönlendiriyoruz",
+    "updatingPasswordText": "Parola Değiştiriliyor...",
+    "updatePasswordText": "Parola Değiştir",
+    "returnButtonText": "Vazgeç",
+    "currentPassword": "Mevcut Parola",
+    "newPassword": "Parola",
+    "confirmPassword": "Parola Tekrarı",
+    "validations": {
+      "newPassword": "Lütfen güncel parolanızı giriniz",
+      "existingPassword": "Lütfen mevcut parolanızı giriniz",
+      "minPasswordLength": "Parola en az 6 karakter uzunluğunda olmalıdır",
+      "passwordsDontMatch": "Parolanız eşleşmiyor"
+    }
+  },
+  "adminPage": {
+    "name": "İSİM",
+    "email": "EMAİL",
+    "walletAddress": "CÜZDAN ADRESİ",
+    "role": "rol",
+    "status": "DURUM",
+    "statusUpdateText": "Kullanıcının durumunu güncelliyorsunuz. Emin misiniz?"
+  },
+  "twoFactorAuth": {
+    "header": "İki Faktörlü Kimlik Doğrulama QR Kodu",
+    "messageHeader": "İki Faktörlü Kimlik Doğrulama Hakkında Bilgi!",
+    "description": "Lütfen telefonunuzdaki 2 faktörlü kimlik doğrulama uygulamalarından birini açın ve QR kodunu tarayın. Modalı kapattığınızda İki Faktörlü Kimlik Doğrulama otomatik olarak etkinleştirilecek ve giriş işlemi sırasında gereklilik haline gelecektir."
+  },
+  "productInteraction": {
+    "header": "Kulanıcı Ürün Listesi",
+    "productName": "Ürün İsmi",
+    "productProcess": "İşlem"
+  },
+  "userInteractionDialog": {
+    "header": "Kulanıcıya Ürün Ekle",
+    "selectProduct": "Ürün Seç",
+    "selectUser": "Kulanıcı Seç",
+    "fillFormErr": "Lütfen Bütün Alanlarda Seçim Yapınız"
+  },
+  "shared": {
+    "goBackText": "Geri Dön",
+    "filterButtonText": "Filtrele",
+    "unhandledErrorMessage": "Bir hata oluştu",
+    "deleteDialogHeader": "Dikkat",
+    "notUpdatedtoastAlert": "Lütfen güncellemeyi unutmayın!",
+    "successfullyUpdate": "Ayarlar başarılı bir şekilde güncellenmiştir.",
+    "uploadImageText": "Görsel Yükle",
+    "chooseFromComputerText": "Bilgisayardan Seç",
+    "maxFileSize": "KB'dan büyük dosya yüklenemez",
+    "noWalletAddressesWereFoundText": "Henüz herhangi bir MetaMask adresi siyah listeye eklenmemiştir.",
+    "invalidFileType": "Geçersiz dosya tipi",
+    "duplicatedWalletAddress": "Mükerrer kayıt",
+    "headerAddButton": "Yeni Kayıt",
+    "headerRefreshButton": "Yenile",
+    "footerAddButton": "Kaydet",
+    "footerUpdateButton": "Güncelle",
+    "footerCloseButton": "Kapat",
+    "copyText": "Kopyala",
+    "noRowsMessage": "Herhangi bir kayıt bulunamamıştır",
+    "addMetaMaskAddressButtonText": "Master Adres Ekle",
+    "notFoundMetamaskAlertMessage": "Metamask hesabı bulunamadı",
+    "notFoundMetaMaskApp": "Metamask uygulaması bulunamamıştır",
+    "viewAllText": "Tümünü Görüntüle",
+    "contractIsStoppedAlert": "Üzgünüz, şu anda işlem yapamıyorsunuz çünkü kontratınız durduruldu. Kontratı tekrar etkinleştirmek için lütfen Tokenizasyon ayarlarından kontratın durumunu değiştirin.",
+    "blackListAlert": "Üzgünüz, ancak girdiğiniz adres güvenlik nedeniyle kara listeye alınmıştır. Lütfen başka bir adres kullanarak işleminizi tamamlayın.",
+    "approveButtonText": "Onayla",
+    "successfulStatusPill": "BAŞARILI",
+    "unSuccessFullStatusPill": "BAŞARISIZ",
+    "getNftLabel": {
+      "nft": "NFT",
+      "batchNftMint": "Çoklu Mint",
+      "celebrationNft": "Tebrik Kartı"
+    },
+    "getActivityLabel": {
+      "create": "Üretim",
+      "burn": "Yakım",
+      "transfer": "Transfer"
+    },
+    "walletAddressValidationAlertDialog": {
+      "emptyWalletAddressMessage": "Cüzdan adresi girmeden devam edemezsiniz",
+      "invalidWalletAddressMessage": "Lütfen geçerli bir cüzdan adresi giriniz"
+    }
+  },
+  "copyToClipBoardDialog": {
+    "beginning": "İçerik",
+    "end": "kopyalanmıştır"
+  },
+  "tooltip": {
+    "deleteButtonTitle": "Sil",
+    "editButtonTitle": "Güncelle",
+    "captorDetails": "Captor detayları"
+  },
+  "pill": {
+    "activeText": "Aktif",
+    "passiveText": "Pasif"
+  },
+  "dialog": {
+    "deleteDialogHeader": "Dikkat",
+    "deleteDialogMessage": "Bu kayıt silinecektir, emin misiniz",
+    "deleteDialogCancelButtonText": "Vazgeç",
+    "deleteDialogDeleteButtonText": "Kaydı Sil",
+    "deleteDialogDeleteButtonLoadingText": "Kayıt Siliniyor..."
+  }
+}

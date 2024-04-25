@@ -1,0 +1,34 @@
+.form {
+    border-right: rem(1px) solid light-dark(var(--mantine-color-gray-3), var(--mantine-color-dark-7));
+    min-height: rem(900px);
+    max-width: rem(600px);
+    padding-top: rem(80px);
+
+    @media (max-width: $mantine-breakpoint-sm) {
+        max-width: 100%;
+    }
+}
+
+.title {
+    color: light-dark(var(--mantine-color-black), var(--mantine-color-white));
+    font-family:
+            Greycliff CF,
+            var(--mantine-font-family);
+}
+.wrapper {
+    z-index: 1000;
+}
+
+.lottieContainer {
+    flex: 1;
+    z-index: 110;
+    position: absolute;
+    top: 0;
+    right: 0;
+    /*bottom: 0;*/
+    image-orientation: inherit;
+    width: calc(100% - rem(600px));
+    height: 100%; /* Stretch to cover the entire height of the container */
+}
+
+
