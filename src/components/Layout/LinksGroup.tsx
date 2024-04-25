@@ -1,6 +1,6 @@
 import {useEffect, useState} from 'react';
-import { Group, Box, Collapse, ThemeIcon, Text, UnstyledButton, rem } from '@mantine/core';
-import { IconCalendarStats, IconChevronRight } from '@tabler/icons-react';
+import {Group, Box, Collapse, ThemeIcon, Text, UnstyledButton, rem} from '@mantine/core';
+import {IconCalendarStats, IconChevronRight} from '@tabler/icons-react';
 import classes from './SideBar.module.css';
 import {useNavigate} from "react-router-dom";
 
@@ -11,7 +11,12 @@ interface LinksGroupProps {
   links?: { label: string; link: string }[];
 }
 
-export function LinksGroup({ icon: Icon, label, initiallyOpened, links }: LinksGroupProps) {
+export function LinksGroup({
+                             icon: Icon,
+                             label,
+                             initiallyOpened,
+                             links
+                           }: LinksGroupProps) {
   const hasLinks = Array.isArray(links);
   const [opened, setOpened] = useState(initiallyOpened || false);
   const navigate = useNavigate();
@@ -22,9 +27,8 @@ export function LinksGroup({ icon: Icon, label, initiallyOpened, links }: LinksG
     setActive(currentPath);
   }, [location.pathname]);
 
-
-  const items = (hasLinks ? links : []).map((link) => (
-    <Text<'a'>
+  const items = (hasLinks ? links : []).map((link) => {
+    return (<Text<'a'>
       component="a"
       data-active={link.link === active ? 'true' : undefined}
       className={classes.link}
@@ -36,16 +40,22 @@ export function LinksGroup({ icon: Icon, label, initiallyOpened, links }: LinksG
       }}
     >
       {link.label}
-    </Text>
-  ));
+    </Text>)
+  });
 
   return (
     <>
       <UnstyledButton onClick={() => setOpened((o) => !o)} className={classes.control}>
         <Group justify="space-between" gap={0}>
-          <Box style={{ display: 'flex', alignItems: 'center' }}>
+          <Box style={{
+            display: 'flex',
+            alignItems: 'center'
+          }}>
             <ThemeIcon variant="light" size={30}>
-              <Icon style={{ width: rem(18), height: rem(18) }} />
+              <Icon style={{
+                width: rem(18),
+                height: rem(18)
+              }}/>
             </ThemeIcon>
             <Box ml="md">{label}</Box>
           </Box>
@@ -71,9 +81,18 @@ const mockdata = {
   label: 'Releases',
   icon: IconCalendarStats,
   links: [
-    { label: 'Upcoming releases', link: '/' },
-    { label: 'Previous releases', link: '/' },
-    { label: 'Releases schedule', link: '/' },
+    {
+      label: 'Upcoming releases',
+      link: '/'
+    },
+    {
+      label: 'Previous releases',
+      link: '/'
+    },
+    {
+      label: 'Releases schedule',
+      link: '/'
+    },
   ],
 };
 

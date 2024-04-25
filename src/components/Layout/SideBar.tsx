@@ -16,11 +16,17 @@ export function SideBar() {
     setActive(currentPath);
   }, [location.pathname]);
 
-  const links = navigationConfig.map((item,index) => {
+  const links = navigationConfig.map((item, index) => {
+    let links: { label: string, link: string }[] = [];
+
     if (item.subMenu && item.subMenu.length > 0) {
+      links = item.subMenu.map(i => ({
+        label: i.title,
+        link: i.path
+      }));
       return (
-        <LinksGroup key={index} icon={item.icon} label={item.title} links={[{link:item.path,label:item.title}]}/>
-      )
+        <LinksGroup key={index} icon={item.icon} label={item.title} links={links}/>
+      );
     } else {
       return (
         <Link
@@ -37,7 +43,7 @@ export function SideBar() {
           <item.icon className={classes.linkIcon} stroke={1.5}/>
           <span>{item.title}</span>
         </Link>
-      )
+      );
     }
   });
 
