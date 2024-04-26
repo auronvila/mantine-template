@@ -1,95 +1,107 @@
-import React, { useState } from 'react';
-import { UnstyledButton, Tooltip, Title, rem } from '@mantine/core';
-import {
-  IconHome2,
-  IconGauge,
-  IconDeviceDesktopAnalytics,
-  IconFingerprint,
-  IconCalendarStats,
-  IconUser,
-  IconSettings,
-} from '@tabler/icons-react';
+import React, {useEffect, useState} from 'react';
+import {UnstyledButton, Tooltip, Title, rem} from '@mantine/core';
 import classes from './DeckedSideBar.module.css';
-import SideBarBottomContent from "@/components/Layout/SideBarBottomContent";
+import SideBarBottomContent from '@/components/Layout/SideBarBottomContent';
+import navigationConfig from '@/configs/navigation.config';
+import {Link, useLocation, useNavigate} from 'react-router-dom';
+import Views from '@/components/Layout/Views';
 
-const mainLinksMockdata = [
-  { icon: IconHome2, label: 'Home' },
-  { icon: IconGauge, label: 'Dashboard' },
-  { icon: IconDeviceDesktopAnalytics, label: 'Analytics' },
-  { icon: IconCalendarStats, label: 'Releases' },
-  { icon: IconUser, label: 'Account' },
-  { icon: IconFingerprint, label: 'Security' },
-  { icon: IconSettings, label: 'Settings' },
-];
+function DeckedSideBarContent() {
+  const [active, setActive] = useState('');
+  const [activeLink, setActiveLink] = useState('');
+  const navigate = useNavigate();
+  const location = useLocation();
 
-const linksMockdata = [
-  'Security',
-  'Settings',
-  'Dashboard',
-  'Releases',
-  'Account',
-  'Orders',
-  'Clients',
-  'Databases',
-  'Pull Requests',
-  'Open Issues',
-  'Wiki pages',
-];
+  useEffect(() => {
+    const currentPath = location.pathname.split('/');
+    const currentMainLink = currentPath[1];
+    const currentSubLink = currentPath[2];
 
-export default function DeckedSideBar() {
-  const [active, setActive] = useState('Releases');
-  const [activeLink, setActiveLink] = useState('Settings');
+    const isValidMainLink = navigationConfig.some(link => link.path === currentMainLink);
 
-  const mainLinks = mainLinksMockdata.map((link) => (
-    <Tooltip
-      label={link.label}
-      position="right"
-      withArrow
-      transitionProps={{ duration: 0 }}
-      key={link.label}
-    >
-      <UnstyledButton
-        onClick={() => setActive(link.label)}
-        className={classes.mainLink}
-        data-active={link.label === active || undefined}
-      >
-        <link.icon style={{ width: rem(22), height: rem(22) }} stroke={1.5} />
-      </UnstyledButton>
-    </Tooltip>
-  ));
+    if (isValidMainLink) {
+      setActive(currentMainLink);
+      setActiveLink(currentSubLink || '');
+    }
+  }, [location]);
 
-  const links = linksMockdata.map((link) => (
-    <a
-      className={classes.link}
-      data-active={activeLink === link || undefined}
-      href="#"
-      onClick={(event) => {
-        event.preventDefault();
-        setActiveLink(link);
-      }}
-      key={link}
-    >
-      {link}
-    </a>
-  ));
+  const handleMainLinkClick = (mainLink: string) => {
+    setActive(mainLink);
+    setActiveLink('');
+  };
 
   return (
     <nav className={classes.navbar}>
       <div className={classes.wrapper}>
         <div className={classes.aside}>
           <div>
-            <img className={classes.logo} alt={'Bloxima Logo'} src={'/logo/logo-light-full.png'}/>
+            <img
+              className={classes.logo}
+              alt={'Bloxima Logo'}
+              src={'/logo/logo-light-full.png'}
+            />
           </div>
-          {mainLinks}
+          {navigationConfig.map((link, index) => (
+            <Tooltip
+              label={link.title}
+              position="right"
+              withArrow
+              transitionProps={{duration: 0}}
+              key={index}
+            >
+              <UnstyledButton
+                onClick={() => handleMainLinkClick(link.path)}
+                className={classes.mainLink}
+                data-active={link.path === active || undefined}
+              >
+                <link.icon style={{
+                  width: rem(22),
+                  height: rem(22)
+                }} stroke={1.5}/>
+              </UnstyledButton>
+            </Tooltip>
+          ))}
         </div>
         <div className={classes.main}>
           <Title order={4} className={classes.title}>
             {active}
           </Title>
-          {links}
+          {navigationConfig.map((link, index) => (
+            <div key={index} style={{display: link.path === active ? 'block' : 'none'}}>
+              {link.subMenu &&
+                link.subMenu.map((submenuItem, subIndex) => (
+                  <Link
+                    to={`${link.path}/${submenuItem.path}`}
+                    className={classes.link}
+                    data-active={`${submenuItem.path}` === activeLink || undefined}
+                    key={subIndex}
+                  >
+                    {submenuItem.title}
+                  </Link>
+                ))}
+            </div>
+          ))}
           <SideBarBottomContent/>
         </div>
       </div>
     </nav>
+  );
+}
+
+export default function DeckedSideBar() {
+  return (
+    <div style={{
+      display: 'flex',
+      flex: '1 1 auto'
+    }}>
+      <DeckedSideBarContent/>
+      <div style={{
+        padding: '1rem',
+        backgroundColor: 'rgb(241,240,240)',
+        flex: 1
+      }}>
+        <Views/>
+      </div>
+    </div>
   );
 }

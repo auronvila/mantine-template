@@ -55,7 +55,6 @@ export function SideBar() {
         </Group>
         {links}
       </div>
-
       <div className={classes.footer}>
         <SideBarBottomContent/>
       </div>

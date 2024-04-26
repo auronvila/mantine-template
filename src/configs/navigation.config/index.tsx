@@ -4,12 +4,25 @@ import {IconDashboard, IconBellRinging} from '@tabler/icons-react';
 const navigationConfig: NavigationTree[] = [
   {
     key: 'dashboard',
-    path: '',
+    path: 'dashboard',
     title: 'Dashboard',
     translateKey: 'nav.dashboard',
     icon: IconDashboard,
     authority: [],
-    subMenu: []
+    subMenu: [
+      {
+        path:'aaa',
+        title:'aaa',
+        key:'aaa',
+        translateKey:''
+      },
+      {
+        path:'bbb',
+        title:'bbb',
+        key:'bbb',
+        translateKey:''
+      }
+    ]
   },
   {
     key: 'users',
@@ -18,7 +31,20 @@ const navigationConfig: NavigationTree[] = [
     translateKey: 'nav.users',
     icon: IconBellRinging,
     authority: [],
-    // subMenu: []
+    subMenu: [
+      {
+        path:'ccc',
+        title:'ccc',
+        key:'ccc',
+        translateKey:''
+      },
+      {
+        path:'ddd',
+        title:'ddd',
+        key:'ddd',
+        translateKey:''
+      }
+    ]
   },
 ];
 
