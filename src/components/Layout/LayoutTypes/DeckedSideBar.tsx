@@ -41,7 +41,7 @@ function DeckedSideBarContent() {
           <div>
             <img
               className={classes.logo}
-              alt={'Bloxima Logo'}
+              alt={'Mantine Logo'}
               src={'/logo/logo-light-full.svg'}
             />
           </div>

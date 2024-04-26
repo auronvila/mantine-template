@@ -14,7 +14,7 @@ const navigationConfig: NavigationTree[] = [
   },
   {
     key: 'users',
-    path: '/users',
+    path: 'users',
     title: 'Users',
     translateKey: 'nav.users',
     icon: IconUser,

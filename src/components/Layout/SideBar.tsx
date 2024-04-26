@@ -12,7 +12,7 @@ export function SideBar() {
   const [active, setActive] = useState('');
 
   useEffect(() => {
-    const currentPath = location.pathname;
+    const currentPath = location.pathname.split('/')[1];
     setActive(currentPath);
   }, [location.pathname]);
 
@@ -51,7 +51,7 @@ export function SideBar() {
     <nav className={classes.navbar}>
       <div className={classes.navbarMain}>
         <Group className={classes.header} justify="space-between">
-          <img className={classes.logo} alt={'Bloxima Logo'} src={'/logo/logo-light-full.svg'}/>
+          <img className={classes.logo} alt={'Mantine Logo'} src={'/logo/logo-light-full.svg'}/>
         </Group>
         {links}
       </div>
