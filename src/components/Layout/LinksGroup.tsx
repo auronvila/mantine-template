@@ -44,9 +44,9 @@ export function LinksGroup({
   });
 
   return (
-    <>
+    <div style={{marginBottom:'0.8rem'}}>
       <UnstyledButton onClick={() => setOpened((o) => !o)} className={classes.control}>
-        <Group justify="space-between" gap={0}>
+        <Group justify="space-between" gap={5}>
           <Box style={{
             display: 'flex',
             alignItems: 'center'
@@ -73,33 +73,6 @@ export function LinksGroup({
         </Group>
       </UnstyledButton>
       {hasLinks ? <Collapse in={opened}>{items}</Collapse> : null}
-    </>
-  );
-}
-
-const mockdata = {
-  label: 'Releases',
-  icon: IconCalendarStats,
-  links: [
-    {
-      label: 'Upcoming releases',
-      link: '/'
-    },
-    {
-      label: 'Previous releases',
-      link: '/'
-    },
-    {
-      label: 'Releases schedule',
-      link: '/'
-    },
-  ],
-};
-
-export function NavbarLinksGroup() {
-  return (
-    <Box mih={220} p="md">
-      <LinksGroup {...mockdata} />
-    </Box>
+    </div>
   );
 }

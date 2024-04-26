@@ -11,7 +11,7 @@ export default function SideBarBottomContent(){
       <div className={classes.link} onClick={(event) => {
         signOut()
       }}>
-        <span>Çıkış</span>
+        <span>Exit</span>
       </div>
     </>
   )

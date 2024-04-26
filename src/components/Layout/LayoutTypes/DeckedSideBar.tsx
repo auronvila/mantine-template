@@ -9,7 +9,7 @@ import Views from '@/components/Layout/Views';
 function DeckedSideBarContent() {
   const [active, setActive] = useState('');
   const [activeLink, setActiveLink] = useState('');
-  const navigate = useNavigate();
+  const [title, setTitle] = useState('')
   const location = useLocation();
 
   useEffect(() => {
@@ -17,7 +17,10 @@ function DeckedSideBarContent() {
     const currentMainLink = currentPath[1];
     const currentSubLink = currentPath[2];
 
-    const isValidMainLink = navigationConfig.some(link => link.path === currentMainLink);
+    const isValidMainLink = navigationConfig.some(link => {
+      setTitle(link.title)
+      return link.path === currentMainLink
+    });
 
     if (isValidMainLink) {
       setActive(currentMainLink);
@@ -25,8 +28,9 @@ function DeckedSideBarContent() {
     }
   }, [location]);
 
-  const handleMainLinkClick = (mainLink: string) => {
+  const handleMainLinkClick = (mainLink: string, title: string) => {
     setActive(mainLink);
+    setTitle(title)
     setActiveLink('');
   };
 
@@ -38,7 +42,7 @@ function DeckedSideBarContent() {
             <img
               className={classes.logo}
               alt={'Bloxima Logo'}
-              src={'/logo/logo-light-full.png'}
+              src={'/logo/logo-light-full.svg'}
             />
           </div>
           {navigationConfig.map((link, index) => (
@@ -50,7 +54,7 @@ function DeckedSideBarContent() {
               key={index}
             >
               <UnstyledButton
-                onClick={() => handleMainLinkClick(link.path)}
+                onClick={() => handleMainLinkClick(link.path, link.title)}
                 className={classes.mainLink}
                 data-active={link.path === active || undefined}
               >
@@ -63,25 +67,29 @@ function DeckedSideBarContent() {
           ))}
         </div>
         <div className={classes.main}>
-          <Title order={4} className={classes.title}>
-            {active}
-          </Title>
-          {navigationConfig.map((link, index) => (
-            <div key={index} style={{display: link.path === active ? 'block' : 'none'}}>
-              {link.subMenu &&
-                link.subMenu.map((submenuItem, subIndex) => (
-                  <Link
-                    to={`${link.path}/${submenuItem.path}`}
-                    className={classes.link}
-                    data-active={`${submenuItem.path}` === activeLink || undefined}
-                    key={subIndex}
-                  >
-                    {submenuItem.title}
-                  </Link>
-                ))}
-            </div>
-          ))}
-          <SideBarBottomContent/>
+          <div>
+            <Title order={4} className={classes.title}>
+              {title}
+            </Title>
+            {navigationConfig.map((link, index) => (
+              <div key={index} style={{display: link.path === active ? 'block' : 'none'}}>
+                {link.subMenu &&
+                  link.subMenu.map((submenuItem, subIndex) => (
+                    <Link
+                      to={`${link.path}/${submenuItem.path}`}
+                      className={classes.link}
+                      data-active={`${submenuItem.path}` === activeLink || undefined}
+                      key={subIndex}
+                    >
+                      {submenuItem.title}
+                    </Link>
+                  ))}
+              </div>
+            ))}
+          </div>
+          <div className={classes.sideBarBottomContent}>
+            <SideBarBottomContent/>
+          </div>
         </div>
       </div>
     </nav>

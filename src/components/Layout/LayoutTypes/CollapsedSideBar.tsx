@@ -105,7 +105,7 @@ function CollapsedSideBarContent() {
   return (
     <nav className={classes.navbar}>
       <Center>
-        <img className={classes.logo} alt={'Bloxima Logo'} src={'/logo/logo-light-full.png'}/>
+        <img className={classes.logo} alt={'Bloxima Logo'} src={'/logo/logo-light-full.svg'}/>
       </Center>
       <div className={classes.navbarMain}>
         <Stack justify="center" gap={0}>
@@ -122,7 +122,8 @@ export default function CollapsedSideBar() {
     <>
       <div style={{
         display: 'flex',
-        flex: ' 1 1 auto'
+        flex: ' 1 1 auto',
+        backgroundColor: 'rgb(241,240,240)',
       }}>
         <CollapsedSideBarContent/>
         <div style={{

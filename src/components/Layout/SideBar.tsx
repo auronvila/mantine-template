@@ -51,7 +51,7 @@ export function SideBar() {
     <nav className={classes.navbar}>
       <div className={classes.navbarMain}>
         <Group className={classes.header} justify="space-between">
-          <img className={classes.logo} alt={'Bloxima Logo'} src={'/logo/logo-light-full.png'}/>
+          <img className={classes.logo} alt={'Bloxima Logo'} src={'/logo/logo-light-full.svg'}/>
         </Group>
         {links}
       </div>

@@ -22,11 +22,15 @@
 }
 
 .main {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     flex: 1;
     background-color: light-dark(var(--mantine-color-gray-0), var(--mantine-color-dark-6));
 }
 
 .mainLink {
+    margin-bottom: var(--mantine-spacing-sm);
     width: rem(44px);
     height: rem(44px);
     border-radius: var(--mantine-radius-md);
@@ -51,7 +55,7 @@
 .title {
     font-family: Greycliff CF,
     var(--mantine-font-family);
-    margin-bottom: var(--mantine-spacing-xl);
+    margin-bottom: var(--mantine-spacing-md);
     background-color: var(--mantine-color-body);
     padding: var(--mantine-spacing-md);
     padding-top: rem(18px);
@@ -60,6 +64,7 @@
 }
 
 .logo {
+    margin-bottom: var(--mantine-spacing-md);
     width: 3rem;
     display: flex;
     justify-content: center;
@@ -77,6 +82,7 @@
     padding: 0 var(--mantine-spacing-md);
     font-size: var(--mantine-font-size-sm);
     margin-right: var(--mantine-spacing-md);
+    margin-top: var(--mantine-spacing-sm);
     font-weight: 500;
     height: rem(44px);
     line-height: rem(44px);
@@ -94,4 +100,8 @@
             color: var(--mantine-color-white);
         }
     }
+}
+
+.sideBarBottomContent {
+    margin-bottom: var(--mantine-spacing-xl);
 }
