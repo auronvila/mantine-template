@@ -1,5 +1,5 @@
 import type {NavigationTree} from '@/@types/navigation';
-import {IconDashboard, IconBellRinging} from '@tabler/icons-react';
+import {IconDashboard, IconUser} from '@tabler/icons-react';
 
 const navigationConfig: NavigationTree[] = [
   {
@@ -10,18 +10,6 @@ const navigationConfig: NavigationTree[] = [
     icon: IconDashboard,
     authority: [],
     subMenu: [
-      {
-        path:'aaa',
-        title:'aaa',
-        key:'aaa',
-        translateKey:''
-      },
-      {
-        path:'bbb',
-        title:'bbb',
-        key:'bbb',
-        translateKey:''
-      }
     ]
   },
   {
@@ -29,21 +17,10 @@ const navigationConfig: NavigationTree[] = [
     path: '/users',
     title: 'Users',
     translateKey: 'nav.users',
-    icon: IconBellRinging,
+    icon: IconUser,
     authority: [],
     subMenu: [
-      {
-        path:'ccc',
-        title:'ccc',
-        key:'ccc',
-        translateKey:''
-      },
-      {
-        path:'ddd',
-        title:'ddd',
-        key:'ddd',
-        translateKey:''
-      }
+
     ]
   },
 ];
