@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { UnstyledButton, Tooltip, Title, rem } from '@mantine/core';
 import {
   IconHome2,
@@ -10,6 +10,7 @@ import {
   IconSettings,
 } from '@tabler/icons-react';
 import classes from './DeckedSideBar.module.css';
+import SideBarBottomContent from "@/components/Layout/SideBarBottomContent";
 
 const mainLinksMockdata = [
   { icon: IconHome2, label: 'Home' },
@@ -76,7 +77,8 @@ export default function DeckedSideBar() {
     <nav className={classes.navbar}>
       <div className={classes.wrapper}>
         <div className={classes.aside}>
-          <div className={classes.logo}>
+          <div>
+            <img className={classes.logo} alt={'Bloxima Logo'} src={'/logo/logo-light-full.png'}/>
           </div>
           {mainLinks}
         </div>
@@ -84,8 +86,8 @@ export default function DeckedSideBar() {
           <Title order={4} className={classes.title}>
             {active}
           </Title>
-
           {links}
+          <SideBarBottomContent/>
         </div>
       </div>
     </nav>

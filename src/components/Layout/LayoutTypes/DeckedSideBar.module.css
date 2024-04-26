@@ -49,9 +49,8 @@
 }
 
 .title {
-    font-family:
-            Greycliff CF,
-            var(--mantine-font-family);
+    font-family: Greycliff CF,
+    var(--mantine-font-family);
     margin-bottom: var(--mantine-spacing-xl);
     background-color: var(--mantine-color-body);
     padding: var(--mantine-spacing-md);
@@ -61,13 +60,12 @@
 }
 
 .logo {
-    width: 100%;
+    width: 3rem;
     display: flex;
     justify-content: center;
-    height: rem(60px);
-    padding-top: var(--mantine-spacing-md);
+    padding-bottom: 4px;
+    padding-top: 6px;
     border-bottom: rem(1px) solid light-dark(var(--mantine-color-gray-3), var(--mantine-color-dark-7));
-    margin-bottom: var(--mantine-spacing-xl);
 }
 
 .link {
