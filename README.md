@@ -6,9 +6,15 @@ This template comes with the following features:
 
 - [PostCSS](https://postcss.org/) with [mantine-postcss-preset](https://mantine.dev/styles/postcss-preset)
 - [TypeScript](https://www.typescriptlang.org/)
+- [Redux-toolkit](https://redux-toolkit.js.org/) with redux-persist
 - [Storybook](https://storybook.js.org/)
 - [Vitest](https://vitest.dev/) setup with [React Testing Library](https://testing-library.com/docs/react-testing-library/intro)
 - ESLint setup with [eslint-config-mantine](https://github.com/mantinedev/eslint-config-mantine)
+- Internationalization using [i18next](https://www.i18next.com/)
+- Custom auth hooks
+- App configuration
+- [Axios](https://axios-http.com/docs/intro) setup
+- [React Router](https://reactrouter.com/en/main) Setup
 
 ## npm scripts
 
