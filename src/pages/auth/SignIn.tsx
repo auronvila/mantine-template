@@ -4,7 +4,7 @@ import {
   TextInput,
   PasswordInput,
   Button,
-  Title,
+  Title, Text,
 } from '@mantine/core';
 import classes from './SignIn.module.css';
 import * as yup from 'yup';
@@ -52,6 +52,9 @@ export default function SignIn() {
             <Title order={2} className={classes.title} ta="center" mt="md" mb={50}>
               Welcome to Mantine Template
             </Title>
+            <Text ta="center" mt="md" mb={50}>
+              To get more information about the template please check the <a href={'https://github.com/auronvila/mantine-template/wiki'}>documentation</a>
+            </Text>
             <TextInput {...form.getInputProps('email')} name={'email'} label="Email address" withAsterisk
                        placeholder="hello@gmail.com" size="md"/>
             <PasswordInput {...form.getInputProps('password')} name={'password'} label="Password"
