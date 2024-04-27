@@ -7,8 +7,6 @@ import {
   Title,
 } from '@mantine/core';
 import classes from './SignIn.module.css';
-import Lottie from 'react-lottie';
-import animationData from '../../../public/animation/sign-in-anim.json';
 import * as yup from 'yup';
 import {useForm, yupResolver} from "@mantine/form";
 import useAuth from "@/utils/hooks/useAuth";
