@@ -3,12 +3,6 @@ export type SignInCredential = {
   password: string
 }
 
-export type SignInWithGoogleCredentials = {
-  userName: string
-  password: string
-  isGoogleAuth: boolean
-}
-
 export type ForgotPasswordReq = {
   email: string
 }
@@ -35,16 +29,3 @@ export type SignUpCredential = {
   password: string
 }
 
-export type ForgotPassword = {
-  email: string
-}
-
-export type ResetPassword = {
-  password: string
-}
-
-export type UpdatePasswordReqDto = {
-  email: string,
-  token: string,
-  password: string,
-}

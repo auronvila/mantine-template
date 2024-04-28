@@ -8,7 +8,7 @@ import {
 import appConfig from '@/configs/app.config'
 import {REDIRECT_URL_KEY} from '@/constants/app.constant'
 import {useNavigate} from 'react-router-dom'
-import {SignInCredential, SignInResponse, SignInWithGoogleCredentials, SignUpCredential} from '@/@types/auth'
+import {SignInCredential, SignUpCredential} from '@/@types/auth'
 import {AuthService} from "@/services/auth/auth.service";
 import useQuery from './useQuery'
 
@@ -37,20 +37,6 @@ function useAuth() {
       dispatch(setUserId(resp.id))
       const {access_token, id, email, fullName, phoneNumber} = resp
       dispatch(signInSuccess({token: access_token, refreshToken: '', expireTime: 0}))
-      // const userInfo = await AuthService.userinfo()
-      // dispatch(
-      //   setUserInfo({
-      //     isTwoFaEnabled: resp.isTwoFactorEnabled,
-      //     googleLogin: false,
-      //     name: userInfo.name,
-      //     walletAddress: userInfo.walletAddress,
-      //     email: userInfo.email,
-      //     role: userInfo.role,
-      //     userId: userInfo.userId,
-      //     language: userInfo.language,
-      //     notificationCount: 0
-      //   })
-      // )
       dispatch(
         setUser(
           {
@@ -72,54 +58,6 @@ function useAuth() {
         navigate('/two-factor', {state: values})
         return
       }
-      return {
-        status: 'failed',
-        message: errors?.response?.data?.description || errors.toString()
-      }
-    }
-  }
-
-  const signInWithGoogle = async (
-    values: SignInResponse
-  ): Promise<
-    | {
-    status: Status
-    message: string
-  }
-    | undefined
-  > => {
-    try {
-      // const resp = await AuthService.signIn(values.userName, values.password)
-      // const { accessToken } = values
-      // dispatch(signInSuccess({ token: accessToken, refreshToken: values.refreshToken, expireTime: values.expireTime }))
-      // const userInfo = await AuthService.userinfo()
-      // dispatch(
-      //   setUserInfo({
-      //     googleLogin: true,
-      //     name: userInfo.name,
-      //     walletAddress: userInfo.walletAddress,
-      //     email: userInfo.email,
-      //     role: userInfo.role,
-      //     userId: userInfo.userId,
-      //     language: userInfo.language
-      //   })
-      // )
-      // dispatch(
-      //   setUser(
-      //     values.user || {
-      //       userName: userInfo.name,
-      //       role: userInfo.role,
-      //       email: userInfo.email
-      //     }
-      //   )
-      // )
-      // const redirectUrl = query.get(REDIRECT_URL_KEY)
-      // navigate(redirectUrl ? redirectUrl : appConfig.authenticatedEntryPath)
-      // return {
-      //   status: 'success',
-      //   message: ''
-      // }
-    } catch (errors: any) {
       return {
         status: 'failed',
         message: errors?.response?.data?.description || errors.toString()
@@ -167,7 +105,6 @@ function useAuth() {
     signIn,
     signUp,
     signOut,
-    signInWithGoogle
   }
 }
 
