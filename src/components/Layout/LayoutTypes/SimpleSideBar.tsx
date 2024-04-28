@@ -35,12 +35,12 @@ function SideBar() {
       return (
         <Link
           className={classes.link}
-          data-active={item.path === active ? 'true' : undefined}
+          data-active={item.path.split('/')[1] === active ? 'true' : undefined}
           to={item.path}
           key={index}
           onClick={(event) => {
             event.preventDefault();
-            setActive(item.path);
+            setActive(item.path.split('/')[1]);
             navigate(item.path);
           }}
         >
