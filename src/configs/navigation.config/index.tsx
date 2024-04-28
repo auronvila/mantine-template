@@ -5,22 +5,20 @@ const navigationConfig: NavigationTree[] = [
   {
     key: 'dashboard',
     path: 'dashboard',
-    title: 'Dashboard',
+    title: 'nav.dashboard',
     translateKey: 'nav.dashboard',
     icon: IconDashboard,
     authority: [],
-    subMenu: [
-    ]
+    subMenu: []
   },
   {
     key: 'users',
     path: 'users',
     title: 'Users',
-    translateKey: 'nav.users',
+    translateKey: '',
     icon: IconUser,
     authority: [],
     subMenu: [
-
     ]
   },
 ];

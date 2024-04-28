@@ -6,11 +6,14 @@ import {LinksGroup} from "@/components/Layout/LinksGroup";
 import classes from "@/components/Layout/LayoutTypes/SimpleSideBar.module.css";
 import {Group} from "@mantine/core";
 import SimpleSideBarBottomContent from "@/components/Layout/LayoutTypes/SimpleSideBarBottomContent";
+import {useTranslation} from "react-i18next";
 
 function SideBar() {
   const navigate = useNavigate();
   const location = useLocation();
   const [active, setActive] = useState('');
+  const {t} = useTranslation()
+
 
   useEffect(() => {
     const currentPath = location.pathname.split('/')[1];
@@ -42,7 +45,7 @@ function SideBar() {
           }}
         >
           <item.icon className={classes.linkIcon} stroke={1.5}/>
-          <span>{item.title}</span>
+          <span>{item.translateKey ? t(item.translateKey) : item.title}</span>
         </Link>
       );
     }

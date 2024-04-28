@@ -3,14 +3,16 @@ import {UnstyledButton, Tooltip, Title, rem} from '@mantine/core';
 import classes from './DeckedSideBar.module.css';
 import SimpleSideBarBottomContent from '@/components/Layout/LayoutTypes/SimpleSideBarBottomContent';
 import navigationConfig from '@/configs/navigation.config';
-import {Link, useLocation, useNavigate} from 'react-router-dom';
+import {Link, useLocation} from 'react-router-dom';
 import Views from '@/components/Layout/Views';
+import {useTranslation} from "react-i18next";
 
 function DeckedSideBarContent() {
   const [active, setActive] = useState('');
   const [activeLink, setActiveLink] = useState('');
   const [title, setTitle] = useState('')
   const location = useLocation();
+  const {t} = useTranslation()
 
   useEffect(() => {
     const currentPath = location.pathname.split('/');
@@ -28,9 +30,9 @@ function DeckedSideBarContent() {
     }
   }, [location]);
 
-  const handleMainLinkClick = (mainLink: string, title: string) => {
+  const handleMainLinkClick = (mainLink: string, title: string, translateKey: string) => {
     setActive(mainLink);
-    setTitle(title)
+    setTitle(translateKey ? t(translateKey) : title)
     setActiveLink('');
   };
 
@@ -47,14 +49,14 @@ function DeckedSideBarContent() {
           </div>
           {navigationConfig.map((link, index) => (
             <Tooltip
-              label={link.title}
+              label={link.translateKey ? t(link.translateKey) : link.title}
               position="right"
               withArrow
               transitionProps={{duration: 0}}
               key={index}
             >
               <UnstyledButton
-                onClick={() => handleMainLinkClick(link.path, link.title)}
+                onClick={() => handleMainLinkClick(link.path, link.title, link.translateKey)}
                 className={classes.mainLink}
                 data-active={link.path === active || undefined}
               >
@@ -81,7 +83,7 @@ function DeckedSideBarContent() {
                       data-active={`${submenuItem.path}` === activeLink || undefined}
                       key={subIndex}
                     >
-                      {submenuItem.title}
+                      {submenuItem.translateKey ? t(submenuItem.translateKey) : submenuItem.title}
                     </Link>
                   ))}
               </div>

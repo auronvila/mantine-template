@@ -17,18 +17,6 @@ export const protectedRoutes = [
     component: lazy(() => import('@/pages/Users')),
     authority: []
   },
-  {
-    key: 'dashboardd',
-    path: '/dashboard/aaa',
-    component: lazy(() => import('@/pages/Users')),
-    authority: []
-  },
-  {
-    key: 'dashboarda',
-    path: '/dashboard/bbb',
-    component: lazy(() => import('@/pages/auth/SignIn')),
-    authority: []
-  },
   // {
   //   key: 'dashboard',
   //   path: '/dashboard',
