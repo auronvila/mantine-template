@@ -13,6 +13,7 @@ This template comes with the following features:
 - Internationalization using [i18next](https://www.i18next.com/)
 - Custom auth hooks
 - App configuration
+- [Yup](https://www.npmjs.com/package/yup) schema validation
 - [Axios](https://axios-http.com/docs/intro) setup
 - [React Router](https://reactrouter.com/en/main) Setup
 
