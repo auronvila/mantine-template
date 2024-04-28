@@ -14,24 +14,6 @@ const authRoute: Routes = [
   //   component: lazy(() => import('@/views/auth/SignUp')),
   //   authority: []
   // },
-  // {
-  //   key: 'forgotPassword',
-  //   path: `/forgot-password`,
-  //   component: lazy(() => import('@/views/auth/ForgotPassword')),
-  //   authority: []
-  // },
-  // {
-  //   key: 'two-factor',
-  //   path: `/two-factor`,
-  //   component: lazy(() => import('@/views/auth/TwoFactorAuth/TwoFactorAuthPage')),
-  //   authority: []
-  // },
-  // {
-  //   key: 'log-out',
-  //   path: `/log-out/:key`,
-  //   component: lazy(() => import('@/views/logout')),
-  //   authority: []
-  // },
 ]
 
 export default authRoute

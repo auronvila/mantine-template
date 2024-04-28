@@ -49,4 +49,9 @@ Open [http://localhost:5173](http://localhost:5173) with your browser to see the
 - `prettier:write` – formats all files with Prettier
 
 ## About
+This template was created for users who want production level template but also do not want to spend to much time on configuring some stuff like authentication or axios.
+The template also supports multiple layouts that are available in [mantine ui](https://ui.mantine.dev/category/navbars/). For more information and details on how you can make changes in the template and configure it for your needs please check out the [wiki](https://github.com/auronvila/mantine-template/wiki).
 
+
+## Contributions
+Any contribution is welcomed :).

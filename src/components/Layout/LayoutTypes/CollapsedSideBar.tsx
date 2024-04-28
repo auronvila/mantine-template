@@ -1,21 +1,30 @@
 import React, {useEffect, useState} from 'react';
-import {Center, Tooltip, UnstyledButton, Stack, rem} from '@mantine/core';
+import {Center, Stack} from '@mantine/core';
 import {
-  IconHome2,
-  IconGauge,
-  IconDeviceDesktopAnalytics,
-  IconFingerprint,
-  IconCalendarStats,
-  IconUser,
-  IconSettings,
   IconLogout,
-  IconSwitchHorizontal,
 } from '@tabler/icons-react';
 import classes from './CollapsedSideBar.module.css';
-import SideBarBottomContent from "@/components/Layout/SideBarBottomContent";
 import navigationConfig from "@/configs/navigation.config";
 import {Link, useLocation, useNavigate} from "react-router-dom";
 import Views from "@/components/Layout/Views";
+import useAuth from "@/utils/hooks/useAuth";
+import CollapsedSideBarUserPopOver from "@/components/UserPopOver/CollapsedSideBarUserPopOver";
+
+function CollapsedSideBarBottomContent() {
+  const {signOut} = useAuth()
+  return (
+    <div className={classes.linkWrapper}>
+      <div className={classes.link}>
+        <CollapsedSideBarUserPopOver/>
+      </div>
+      <div className={classes.link} onClick={(event) => {
+        signOut()
+      }}>
+        <IconLogout/>
+      </div>
+    </div>
+  )
+}
 
 function CollapsedSideBarContent() {
   const [active, setActive] = useState('');
@@ -26,8 +35,6 @@ function CollapsedSideBarContent() {
     const currentPath = location.pathname.split('/')[1];
     setActive(currentPath);
   }, [location.pathname]);
-
-
 
   const links = navigationConfig.map((item) => (
     <Link
@@ -41,7 +48,7 @@ function CollapsedSideBarContent() {
         navigate(item.path);
       }}
     >
-      <item.icon className={classes.linkIcon} stroke={1.5} />
+      <item.icon className={classes.linkIcon} stroke={1.5}/>
     </Link>
   ));
 
@@ -55,12 +62,13 @@ function CollapsedSideBarContent() {
           {links}
         </Stack>
       </div>
+      <CollapsedSideBarBottomContent/>
     </nav>
   )
 }
 
 export default function CollapsedSideBar() {
-  return(
+  return (
     <>
       <div style={{
         display: 'flex',

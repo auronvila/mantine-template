@@ -1,0 +1,12 @@
+.contentWrapper {
+    padding: 0.5rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+}
+
+.contentWrapper:hover {
+    cursor: pointer;
+    border-radius: var(--mantine-radius-lg);
+}

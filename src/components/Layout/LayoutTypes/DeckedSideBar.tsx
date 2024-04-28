@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import {UnstyledButton, Tooltip, Title, rem} from '@mantine/core';
 import classes from './DeckedSideBar.module.css';
-import SideBarBottomContent from '@/components/Layout/SideBarBottomContent';
+import SimpleSideBarBottomContent from '@/components/Layout/LayoutTypes/SimpleSideBarBottomContent';
 import navigationConfig from '@/configs/navigation.config';
 import {Link, useLocation, useNavigate} from 'react-router-dom';
 import Views from '@/components/Layout/Views';
@@ -88,7 +88,7 @@ function DeckedSideBarContent() {
             ))}
           </div>
           <div className={classes.sideBarBottomContent}>
-            <SideBarBottomContent/>
+            <SimpleSideBarBottomContent/>
           </div>
         </div>
       </div>
