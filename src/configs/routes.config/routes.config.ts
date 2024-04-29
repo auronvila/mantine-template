@@ -8,37 +8,31 @@ export const protectedRoutes = [
   {
     key: 'dashboard',
     path: '/dashboard',
-    component: lazy(() => import('@/pages/Dashboard')),
+    component: lazy(() => import('@/pages/examples/Dashboard')),
     authority: []
   },
   {
     key: 'users',
     path: '/users',
-    component: lazy(() => import('@/pages/Users')),
+    component: lazy(() => import('@/pages/examples/Users')),
     authority: []
   },
-  // {
-  //   key: 'dashboard',
-  //   path: '/dashboard',
-  //   component: lazy(() => import('@/views/dashboard')),
-  //   authority: ['ADMIN']
-  // },
-  // {
-  //   key: 'main',
-  //   path: '/',
-  //   component: lazy(() => import('@/views/Home')),
-  //   authority: []
-  // },
-  // {
-  //   key: 'change-password',
-  //   path: '/change-password',
-  //   component: lazy(() => import('@/views/auth/ChangePassword/ChangePassword')),
-  //   authority: []
-  // },
-  // {
-  //   key: 'log-out',
-  //   path: `/log-out/:key`,
-  //   component: lazy(() => import('@/views/logout')),
-  //   authority: []
-  // },
+  {
+    key: 'pages',
+    path: '/dashboard/pages',
+    component: lazy(() => import('@/pages/examples/Pages')),
+    authority: []
+  },
+  {
+    key: 'files',
+    path: '/dashboard/files',
+    component: lazy(() => import('@/pages/examples/Files')),
+    authority: []
+  },
+  {
+    key: 'manage',
+    path: '/users/manage',
+    component: lazy(() => import('@/pages/examples/Manage')),
+    authority: []
+  },
 ]

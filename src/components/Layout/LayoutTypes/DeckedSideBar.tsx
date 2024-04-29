@@ -19,21 +19,13 @@ function DeckedSideBarContent() {
     const currentMainLink = currentPath[1];
     const currentSubLink = currentPath[2];
 
-    const isValidMainLink = navigationConfig.some(link => {
-      setTitle(link.title)
-      return link.path === currentMainLink
-    });
-
-    if (isValidMainLink) {
-      setActive(currentMainLink);
-      setActiveLink(currentSubLink || '');
-    }
-  }, [location]);
+    setActive(currentMainLink)
+    setActiveLink(currentSubLink)
+  }, [location.pathname]);
 
   const handleMainLinkClick = (mainLink: string, title: string, translateKey: string) => {
-    setActive(mainLink);
+    setActive(mainLink.split('/')[1]);
     setTitle(translateKey ? t(translateKey) : title)
-    setActiveLink('');
   };
 
   return (
@@ -58,7 +50,7 @@ function DeckedSideBarContent() {
               <UnstyledButton
                 onClick={() => handleMainLinkClick(link.path, link.title, link.translateKey)}
                 className={classes.mainLink}
-                data-active={link.path === active || undefined}
+                data-active={link.path.split('/')[1] === active || undefined}
               >
                 <link.icon style={{
                   width: rem(22),
@@ -74,18 +66,18 @@ function DeckedSideBarContent() {
               {title}
             </Title>
             {navigationConfig.map((link, index) => (
-              <div key={index} style={{display: link.path === active ? 'block' : 'none'}}>
-                {link.subMenu &&
-                  link.subMenu.map((submenuItem, subIndex) => (
-                    <Link
+              <div key={index} style={{display: link.path.split('/')[1] === active ? 'block' : 'none'}}>
+                {
+                  link.subMenu?.map((submenuItem, subIndex) => {
+                    return (<Link
                       to={`${link.path}/${submenuItem.path}`}
                       className={classes.link}
                       data-active={`${submenuItem.path}` === activeLink || undefined}
                       key={subIndex}
                     >
                       {submenuItem.translateKey ? t(submenuItem.translateKey) : submenuItem.title}
-                    </Link>
-                  ))}
+                    </Link>)
+                  })}
               </div>
             ))}
           </div>
