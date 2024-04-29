@@ -8,8 +8,8 @@ import Views from '@/components/Layout/Views';
 import {useTranslation} from "react-i18next";
 
 function DeckedSideBarContent() {
-  const [active, setActive] = useState('');
-  const [activeLink, setActiveLink] = useState('');
+  const [activeMainLink, setActiveMainLink] = useState('');
+  const [activeSubLink, setActiveSubLink] = useState('');
   const [title, setTitle] = useState('')
   const location = useLocation();
   const {t} = useTranslation()
@@ -19,13 +19,13 @@ function DeckedSideBarContent() {
     const currentMainLink = currentPath[1];
     const currentSubLink = currentPath[2];
 
-    setActive(currentMainLink)
-    setActiveLink(currentSubLink)
+    setActiveMainLink(currentMainLink)
+    setActiveSubLink(currentSubLink)
     setTitle(currentMainLink.toUpperCase())
   }, [location.pathname]);
 
   const handleMainLinkClick = (mainLink: string, title: string, translateKey: string) => {
-    setActive(mainLink.split('/')[1]);
+    setActiveMainLink(mainLink.split('/')[1]);
     setTitle(translateKey ? t(translateKey) : title)
   };
 
@@ -51,7 +51,7 @@ function DeckedSideBarContent() {
               <UnstyledButton
                 onClick={() => handleMainLinkClick(link.path, link.title, link.translateKey)}
                 className={classes.mainLink}
-                data-active={link.path.split('/')[1] === active || undefined}
+                data-active={link.path.split('/')[1] === activeMainLink || undefined}
               >
                 <link.icon style={{
                   width: rem(22),
@@ -67,13 +67,13 @@ function DeckedSideBarContent() {
               {title.toUpperCase()}
             </Title>
             {navigationConfig.map((link, index) => (
-              <div key={index} style={{display: link.path.split('/')[1] === active ? 'block' : 'none'}}>
+              <div key={index} style={{display: link.path.split('/')[1] === activeMainLink ? 'block' : 'none'}}>
                 {
                   link.subMenu?.map((submenuItem, subIndex) => {
                     return (<Link
                       to={`${link.path}/${submenuItem.path}`}
                       className={classes.link}
-                      data-active={`${submenuItem.path}` === activeLink || undefined}
+                      data-active={`${submenuItem.path}` === activeSubLink || undefined}
                       key={subIndex}
                     >
                       {submenuItem.translateKey ? t(submenuItem.translateKey) : submenuItem.title}
