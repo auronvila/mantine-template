@@ -21,6 +21,7 @@ function DeckedSideBarContent() {
 
     setActive(currentMainLink)
     setActiveLink(currentSubLink)
+    setTitle(currentMainLink.toUpperCase())
   }, [location.pathname]);
 
   const handleMainLinkClick = (mainLink: string, title: string, translateKey: string) => {
@@ -63,7 +64,7 @@ function DeckedSideBarContent() {
         <div className={classes.main}>
           <div>
             <Title order={4} className={classes.title}>
-              {title}
+              {title.toUpperCase()}
             </Title>
             {navigationConfig.map((link, index) => (
               <div key={index} style={{display: link.path.split('/')[1] === active ? 'block' : 'none'}}>
