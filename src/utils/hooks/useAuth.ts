@@ -3,7 +3,7 @@ import {
   signInSuccess,
   signOutSuccess,
   useAppSelector,
-  useAppDispatch, setUserInfo, setUserId, setNotificationCount
+  useAppDispatch, setUserInfo, setUserId
 } from '@/store'
 import appConfig from '@/configs/app.config'
 import {REDIRECT_URL_KEY} from '@/constants/app.constant'
@@ -32,6 +32,7 @@ function useAuth() {
     | undefined
   > => {
     try {
+
       const resp = await AuthService.signIn(values.email, values.password)
 
       dispatch(setUserId(resp.id))
@@ -54,10 +55,6 @@ function useAuth() {
         message: ''
       }
     } catch (errors: any) {
-      if (errors.response.data.message) {
-        navigate('/two-factor', {state: values})
-        return
-      }
       return {
         status: 'failed',
         message: errors?.response?.data?.description || errors.toString()

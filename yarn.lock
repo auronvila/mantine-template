@@ -2460,6 +2460,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@miragejs/pretender-node-polyfill@npm:^0.1.0":
+  version: 0.1.2
+  resolution: "@miragejs/pretender-node-polyfill@npm:0.1.2"
+  checksum: 10c0/93c0002cbeea994404e84d122d0cb8a63531dfd6b9b4fb376febf6a2a91e51e6d748627c972c38de6cfe9f80ae88470734577d0397bbb215184d5a332dba2de9
+  languageName: node
+  linkType: hard
+
 "@ndelangen/get-tarball@npm:^3.0.7":
   version: 3.0.9
   resolution: "@ndelangen/get-tarball@npm:3.0.9"
@@ -7724,6 +7731,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"fake-xml-http-request@npm:^2.1.2":
+  version: 2.1.2
+  resolution: "fake-xml-http-request@npm:2.1.2"
+  checksum: 10c0/26b5ae8e6f927e74fa06caab9a0b01f2fd3485be8bad52d8be2371c432151a681fc744d206889039873887d5441ae810344429a12a4389843dabea1fa3f10c49
+  languageName: node
+  linkType: hard
+
 "fast-deep-equal@npm:^3.1.1, fast-deep-equal@npm:^3.1.3":
   version: 3.1.3
   resolution: "fast-deep-equal@npm:3.1.3"
@@ -8688,6 +8702,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"inflected@npm:^2.0.4":
+  version: 2.1.0
+  resolution: "inflected@npm:2.1.0"
+  checksum: 10c0/2002977295a20d3ff02bf2aa741daab6920c7e10d241e0c6396af97d60a821f0ff5cf7ed3605d0e3c42d789a53507a5c1c7dc274923667ad8e2d495dbc7d152c
+  languageName: node
+  linkType: hard
+
 "inflight@npm:^1.0.4":
   version: 1.0.6
   resolution: "inflight@npm:1.0.6"
@@ -9607,7 +9628,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"lodash@npm:^4.17.15, lodash@npm:^4.17.21":
+"lodash@npm:^4.0.0, lodash@npm:^4.17.15, lodash@npm:^4.17.21":
   version: 4.17.21
   resolution: "lodash@npm:4.17.21"
   checksum: 10c0/d8cbea072bb08655bb4c989da418994b073a608dffa608b09ac04b43a791b12aeae7cd7ad919aa4c925f33b48490b5cfe6c1f71d827956071dae2e7bb3a6b74c
@@ -9795,6 +9816,7 @@ __metadata:
     jsdom: "npm:^24.0.0"
     lottie-web: "npm:^5.12.2"
     mantine-form-yup-resolver: "npm:^2.0.0"
+    miragejs: "npm:^0.1.48"
     postcss: "npm:^8.4.35"
     postcss-preset-mantine: "npm:1.13.0"
     postcss-simple-vars: "npm:^7.0.1"
@@ -10073,6 +10095,18 @@ __metadata:
     minipass: "npm:^3.0.0"
     yallist: "npm:^4.0.0"
   checksum: 10c0/64fae024e1a7d0346a1102bb670085b17b7f95bf6cfdf5b128772ec8faf9ea211464ea4add406a3a6384a7d87a0cd1a96263692134323477b4fb43659a6cab78
+  languageName: node
+  linkType: hard
+
+"miragejs@npm:^0.1.48":
+  version: 0.1.48
+  resolution: "miragejs@npm:0.1.48"
+  dependencies:
+    "@miragejs/pretender-node-polyfill": "npm:^0.1.0"
+    inflected: "npm:^2.0.4"
+    lodash: "npm:^4.0.0"
+    pretender: "npm:^3.4.7"
+  checksum: 10c0/36e83e7fe8a6dd1937e76981a2629ef5f06e2e6704640e36eb58f70715302833110dfe2ed385686505803733836fab633d21bf05f535684cb3ec06e301852182
   languageName: node
   linkType: hard
 
@@ -10905,6 +10939,16 @@ __metadata:
   version: 1.2.1
   resolution: "prelude-ls@npm:1.2.1"
   checksum: 10c0/b00d617431e7886c520a6f498a2e14c75ec58f6d93ba48c3b639cf241b54232d90daa05d83a9e9b9fef6baa63cb7e1e4602c2372fea5bc169668401eb127d0cd
+  languageName: node
+  linkType: hard
+
+"pretender@npm:^3.4.7":
+  version: 3.4.7
+  resolution: "pretender@npm:3.4.7"
+  dependencies:
+    fake-xml-http-request: "npm:^2.1.2"
+    route-recognizer: "npm:^0.3.3"
+  checksum: 10c0/1da084490886bc2b0ace5e823994514e60cc04d440c5519e84e5b8ba41be4388a5bc8e2c062a5d9a1608af759a058d67321c6c6c7a1099b55faa093989d883e4
   languageName: node
   linkType: hard
 
@@ -11897,6 +11941,13 @@ __metadata:
   bin:
     rollup: dist/bin/rollup
   checksum: 10c0/deeac5bed2a24ef954447807a3effd0c931d6f4bf0cc1a48e8c2ad0712db2f112a8bcf26721793556349a154a56fc81712c6f60fd1b5dc58def96c244613107a
+  languageName: node
+  linkType: hard
+
+"route-recognizer@npm:^0.3.3":
+  version: 0.3.4
+  resolution: "route-recognizer@npm:0.3.4"
+  checksum: 10c0/dee14947275d6ee4d48371983590b7c9835d612a9e8347038476424da83db5631affe3b04085a13a9f7b0bd042da5c50d79a81ccbbc490e18978fd860a0f9ddd
   languageName: node
   linkType: hard
 
