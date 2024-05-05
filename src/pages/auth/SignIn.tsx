@@ -26,8 +26,8 @@ export default function SignIn() {
 
   const form = useForm({
     initialValues: {
-      email: '',
-      password: '',
+      email: 'admin@test.com',
+      password: '12345qwerty',
     },
     validate: yupResolver(schema),
   });
@@ -36,7 +36,6 @@ export default function SignIn() {
     setLoading(true)
     try {
       const res = await signIn(values)
-      console.log(res)
     } catch (e) {
       console.log(e)
     } finally {
@@ -53,7 +52,8 @@ export default function SignIn() {
               Welcome to Mantine Template
             </Title>
             <Text ta="center" mt="md" mb={50}>
-              To get more information about the template please check the <a href={'https://github.com/auronvila/mantine-template/wiki'}>documentation</a>
+              To get more information about the template please check the <a
+              href={'https://github.com/auronvila/mantine-template/wiki'}>documentation</a>
             </Text>
             <TextInput {...form.getInputProps('email')} name={'email'} label="Email address" withAsterisk
                        placeholder="hello@gmail.com" size="md"/>
