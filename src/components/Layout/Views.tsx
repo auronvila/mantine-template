@@ -57,7 +57,6 @@ const AllRoutes = (props: AllRoutesProps) => {
               <AppRoute
                 routeKey={route.key}
                 component={route.component}
-                {...route.meta}
               />
             }
           />
