@@ -4,7 +4,7 @@ import {IconDashboard, IconUser} from '@tabler/icons-react';
 const navigationConfig: NavigationTree[] = [
   {
     key: 'dashboard',
-    path: 'dashboard',
+    path: '/dashboard',
     title: 'Dashboard',
     translateKey: '',
     icon: IconDashboard,
@@ -13,7 +13,7 @@ const navigationConfig: NavigationTree[] = [
   },
   {
     key: 'users',
-    path: 'users',
+    path: '/users',
     title: 'Users',
     translateKey: '',
     icon: IconUser,
