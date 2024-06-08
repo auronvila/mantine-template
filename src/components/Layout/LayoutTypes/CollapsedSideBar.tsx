@@ -9,6 +9,8 @@ import {Link, useLocation, useNavigate} from "react-router-dom";
 import Views from "@/components/Layout/Views";
 import useAuth from "@/utils/hooks/useAuth";
 import CollapsedSideBarUserPopOver from "@/components/UserPopOver/CollapsedSideBarUserPopOver";
+import AuthorityCheck from '@/route/AuthorityCheck';
+import {useAppSelector} from "@/store";
 
 function CollapsedSideBarBottomContent() {
   const {signOut} = useAuth()
@@ -30,6 +32,7 @@ function CollapsedSideBarContent() {
   const [active, setActive] = useState('');
   const navigate = useNavigate();
   const location = useLocation();
+  const userAuthority = useAppSelector((state) => state.auth.user.role)
 
   useEffect(() => {
     const currentPath = location.pathname.split('/')[1];
@@ -37,19 +40,21 @@ function CollapsedSideBarContent() {
   }, [location.pathname]);
 
   const links = navigationConfig.map((item) => (
-    <Link
-      className={classes.link}
-      data-active={item.path === active ? 'true' : undefined}
-      to={item.path}
-      key={item.title}
-      onClick={(event) => {
-        event.preventDefault();
-        setActive(item.path);
-        navigate(item.path);
-      }}
-    >
-      <item.icon className={classes.linkIcon} stroke={1.5}/>
-    </Link>
+    <AuthorityCheck userAuthority={userAuthority ? userAuthority : []} authority={item.authority}>
+      <Link
+        className={classes.link}
+        data-active={item.path.split('/')[1] === active ? 'true' : undefined}
+        to={item.path}
+        key={item.title}
+        onClick={(event) => {
+          event.preventDefault();
+          setActive(item.path);
+          navigate(item.path);
+        }}
+      >
+        <item.icon className={classes.linkIcon} stroke={1.5}/>
+      </Link>
+    </AuthorityCheck>
   ));
 
   return (

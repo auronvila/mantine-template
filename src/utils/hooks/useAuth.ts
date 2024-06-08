@@ -17,10 +17,12 @@ type Status = 'success' | 'failed'
 function useAuth() {
   const dispatch = useAppDispatch()
   const navigate = useNavigate()
-  const {token, signedIn} = useAppSelector((state) => state.auth.session)
+  const {
+    token,
+    signedIn
+  } = useAppSelector((state) => state.auth.session)
   const userId = useAppSelector(state => state.auth.userInfo.userId)
   const query = useQuery()
-
 
   const signIn = async (
     values: SignInCredential
@@ -32,18 +34,26 @@ function useAuth() {
     | undefined
   > => {
     try {
-
       const resp = await AuthService.signIn(values.email, values.password)
-
       dispatch(setUserId(resp.id))
-      const {access_token, id, email, fullName, phoneNumber} = resp
-      dispatch(signInSuccess({token: access_token, refreshToken: '', expireTime: 0}))
+      const {
+        access_token,
+        id,
+        email,
+        fullName,
+        phoneNumber
+      } = resp
+      dispatch(signInSuccess({
+        token: access_token,
+        refreshToken: '',
+        expireTime: 0
+      }))
       dispatch(
         setUser(
           {
             fullName: fullName,
             email: email,
-            role: [],
+            role: resp.authority,
             phoneNumber: phoneNumber
           }
         )
@@ -61,7 +71,6 @@ function useAuth() {
       }
     }
   }
-
 
   const signUp = async (values: SignUpCredential) => {
     // try {
@@ -81,7 +90,13 @@ function useAuth() {
 
   const handleSignOut = () => {
     dispatch(signOutSuccess())
-    dispatch(setUserInfo({googleLogin: false, name: '', role: '', email: '', userId: userId}))
+    dispatch(setUserInfo({
+      googleLogin: false,
+      name: '',
+      role: '',
+      email: '',
+      userId: userId
+    }))
     dispatch(
       setUser({
         fullName: '',

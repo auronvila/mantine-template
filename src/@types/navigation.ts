@@ -12,6 +12,7 @@ export interface NavigationTree {
 export interface SubMenuNavigationTree {
   key: string
   path: string
+  authority: string[]
   title: string
   translateKey: string
 }

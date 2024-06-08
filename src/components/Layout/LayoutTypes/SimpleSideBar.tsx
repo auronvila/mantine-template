@@ -7,13 +7,15 @@ import classes from "@/components/Layout/LayoutTypes/SimpleSideBar.module.css";
 import {Group} from "@mantine/core";
 import SimpleSideBarBottomContent from "@/components/Layout/LayoutTypes/SimpleSideBarBottomContent";
 import {useTranslation} from "react-i18next";
+import AuthorityCheck from "@/route/AuthorityCheck";
+import {useAppSelector} from "@/store";
 
 function SideBar() {
   const navigate = useNavigate();
   const location = useLocation();
   const [active, setActive] = useState('');
   const {t} = useTranslation()
-
+  const userAuthority = useAppSelector((state) => state.auth.user.role)
 
   useEffect(() => {
     const currentPath = location.pathname.split('/')[1];
@@ -33,20 +35,22 @@ function SideBar() {
       );
     } else {
       return (
-        <Link
-          className={classes.link}
-          data-active={item.path.split('/')[1] === active ? 'true' : undefined}
-          to={item.path}
-          key={index}
-          onClick={(event) => {
-            event.preventDefault();
-            setActive(item.path.split('/')[1]);
-            navigate(item.path);
-          }}
-        >
-          <item.icon className={classes.linkIcon} stroke={1.5}/>
-          <span>{item.translateKey ? t(item.translateKey) : item.title}</span>
-        </Link>
+        <AuthorityCheck userAuthority={userAuthority ? userAuthority : []} authority={item.authority}>
+          <Link
+            className={classes.link}
+            data-active={item.path.split('/')[1] === active ? 'true' : undefined}
+            to={item.path}
+            key={index}
+            onClick={(event) => {
+              event.preventDefault();
+              setActive(item.path.split('/')[1]);
+              navigate(item.path);
+            }}
+          >
+            <item.icon className={classes.linkIcon} stroke={1.5}/>
+            <span>{item.translateKey ? t(item.translateKey) : item.title}</span>
+          </Link>
+        </AuthorityCheck>
       );
     }
   });
@@ -66,11 +70,19 @@ function SideBar() {
   );
 }
 
-export default function SimpleSideBar(){
+export default function SimpleSideBar() {
   return (
-    <div style={{backgroundColor: 'rgb(241,240,240)', display: 'flex', flex: ' 1 1 auto'}}>
+    <div style={{
+      backgroundColor: 'rgb(241,240,240)',
+      display: 'flex',
+      flex: ' 1 1 auto'
+    }}>
       <SideBar/>
-      <div style={{padding: '1rem', backgroundColor: 'rgb(241,240,240)', flex: 1}}>
+      <div style={{
+        padding: '1rem',
+        backgroundColor: 'rgb(241,240,240)',
+        flex: 1
+      }}>
         <Views/>
       </div>
     </div>

@@ -6,6 +6,8 @@ import navigationConfig from '@/configs/navigation.config';
 import {Link, useLocation} from 'react-router-dom';
 import Views from '@/components/Layout/Views';
 import {useTranslation} from "react-i18next";
+import AuthorityCheck from "@/route/AuthorityCheck";
+import {useAppSelector} from "@/store";
 
 function DeckedSideBarContent() {
   const [activeMainLink, setActiveMainLink] = useState('');
@@ -13,6 +15,7 @@ function DeckedSideBarContent() {
   const [title, setTitle] = useState('')
   const location = useLocation();
   const {t} = useTranslation()
+  const userAuthority = useAppSelector((state) => state.auth.user.role)
 
   useEffect(() => {
     const currentPath = location.pathname.split('/');
@@ -41,24 +44,26 @@ function DeckedSideBarContent() {
             />
           </div>
           {navigationConfig.map((link, index) => (
-            <Tooltip
-              label={link.translateKey ? t(link.translateKey) : link.title}
-              position="right"
-              withArrow
-              transitionProps={{duration: 0}}
-              key={index}
-            >
-              <UnstyledButton
-                onClick={() => handleMainLinkClick(link.path, link.title, link.translateKey)}
-                className={classes.mainLink}
-                data-active={link.path.split('/')[1] === activeMainLink || undefined}
+            <AuthorityCheck userAuthority={userAuthority ? userAuthority : []} authority={link.authority}>
+              <Tooltip
+                label={link.translateKey ? t(link.translateKey) : link.title}
+                position="right"
+                withArrow
+                transitionProps={{duration: 0}}
+                key={index}
               >
-                <link.icon style={{
-                  width: rem(22),
-                  height: rem(22)
-                }} stroke={1.5}/>
-              </UnstyledButton>
-            </Tooltip>
+                <UnstyledButton
+                  onClick={() => handleMainLinkClick(link.path, link.title, link.translateKey)}
+                  className={classes.mainLink}
+                  data-active={link.path.split('/')[1] === activeMainLink || undefined}
+                >
+                  <link.icon style={{
+                    width: rem(22),
+                    height: rem(22)
+                  }} stroke={1.5}/>
+                </UnstyledButton>
+              </Tooltip>
+            </AuthorityCheck>
           ))}
         </div>
         <div className={classes.main}>
@@ -70,14 +75,17 @@ function DeckedSideBarContent() {
               <div key={index} style={{display: link.path.split('/')[1] === activeMainLink ? 'block' : 'none'}}>
                 {
                   link.subMenu?.map((submenuItem, subIndex) => {
-                    return (<Link
-                      to={`${link.path}/${submenuItem.path}`}
-                      className={classes.link}
-                      data-active={`${submenuItem.path}` === activeSubLink || undefined}
-                      key={subIndex}
-                    >
-                      {submenuItem.translateKey ? t(submenuItem.translateKey) : submenuItem.title}
-                    </Link>)
+                    return (
+                      <AuthorityCheck userAuthority={userAuthority ? userAuthority : []} authority={submenuItem.authority}>
+                        <Link
+                          to={`${link.path}/${submenuItem.path}`}
+                          className={classes.link}
+                          data-active={`${submenuItem.path}` === activeSubLink || undefined}
+                          key={subIndex}
+                        >
+                          {submenuItem.translateKey ? t(submenuItem.translateKey) : submenuItem.title}
+                        </Link>
+                      </AuthorityCheck>)
                   })}
               </div>
             ))}
