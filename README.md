@@ -1,4 +1,6 @@
 # Mantine Vite template
+One ⭐ is the best and the easiest support you can give. <3
+
 
 ## Features
 
