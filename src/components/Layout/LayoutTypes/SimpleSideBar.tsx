@@ -4,7 +4,7 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import navigationConfig from '@/configs/navigation.config';
 import { LinksGroup } from '@/components/Layout/LinksGroup';
 import classes from '@/components/Layout/LayoutTypes/SimpleSideBar.module.css';
-import { Card, Group } from '@mantine/core';
+import {Box, Card, Group} from '@mantine/core';
 import SimpleSideBarBottomContent from '@/components/Layout/LayoutTypes/SimpleSideBarBottomContent';
 import { useTranslation } from 'react-i18next';
 import AuthorityCheck from '@/route/AuthorityCheck';
@@ -39,12 +39,14 @@ function SideBar() {
           authority={item.authority}
           key={index}
         >
+          <Box ml={10} my={10}>
           <LinksGroup
             initiallyOpened={isAnyLinkActive}
             icon={item.icon}
             label={item.title}
             links={links}
           />
+          </Box>
         </AuthorityCheck>
       );
     } else {
