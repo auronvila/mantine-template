@@ -63,7 +63,7 @@ function CollapsedSideBarContent() {
         <img className={classes.logo} alt={'Mantine Logo'} src={'/logo/logo-light-full.svg'}/>
       </Center>
       <div className={classes.navbarMain}>
-        <Stack justify="center" gap={0}>
+        <Stack justify="center" gap={10}>
           {links}
         </Stack>
       </div>

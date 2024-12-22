@@ -1,5 +1,4 @@
 .navbar {
-    width: rem(80px);
     height: 100vh;
     padding: var(--mantine-spacing-md);
     display: flex;
@@ -8,6 +7,7 @@
 }
 
 .navbarMain {
+    overflow-y: auto;
     flex: 1;
     margin-top: rem(30px);
 }
