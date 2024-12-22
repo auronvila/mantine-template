@@ -22,6 +22,8 @@
 }
 
 .main {
+    overflow-y: auto;
+    height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -51,6 +53,14 @@
         }
     }
 }
+
+.stickyTitle {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background-color: var(--background-color);
+}
+
 
 .title {
     font-family: Greycliff CF,
@@ -103,5 +113,9 @@
 }
 
 .sideBarBottomContent {
-    margin-bottom: var(--mantine-spacing-xl);
+    width: 239px;
+    position: fixed;
+    bottom: 0;
+    background-color: var(--mantine-color-gray-0);
+    z-index: 10;
 }
