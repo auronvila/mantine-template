@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {Center, Stack} from '@mantine/core';
+import {Card, Center, Stack} from '@mantine/core';
 import {
   IconLogout,
 } from '@tabler/icons-react';
@@ -19,7 +19,7 @@ function CollapsedSideBarBottomContent() {
       <div className={classes.link}>
         <CollapsedSideBarUserPopOver/>
       </div>
-      <div className={classes.link} onClick={(event) => {
+      <div className={classes.link} onClick={() => {
         signOut()
       }}>
         <IconLogout/>
@@ -48,7 +48,6 @@ function CollapsedSideBarContent() {
         key={item.title}
         onClick={(event) => {
           event.preventDefault();
-          setActive(item.path);
           navigate(item.path);
         }}
       >
@@ -82,11 +81,27 @@ export default function CollapsedSideBar() {
       }}>
         <CollapsedSideBarContent/>
         <div style={{
-          padding: '1rem',
-          backgroundColor: 'rgb(241,240,240)',
-          flex: 1
+          padding: '2rem',
+          backgroundColor: '#ffffff',
+          flex: 1,
+          overflow: 'hidden',
+          display: 'flex',
+          flexDirection: 'column',
+          height: '100vh',
         }}>
+          <Card
+            style={{
+              overflowY: 'auto',
+              maxHeight: '100%',
+              width: '100%',
+              flex: 1,
+            }}
+            radius={15}
+            withBorder
+            p={40}
+          >
           <Views/>
+          </Card>
         </div>
       </div>
     </>
