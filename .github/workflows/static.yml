@@ -25,11 +25,14 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
+      - name: Install yarb
+        run: npm i -g yarn
+
       - name: Install dependencies
-        run: npm install  # or yarn install
+        run: yarn install
 
       - name: Build project
-        run: npm run build  # or yarn build
+        run: yarn run build
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
