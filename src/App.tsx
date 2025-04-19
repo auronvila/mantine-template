@@ -9,6 +9,7 @@ import { BrowserRouter } from 'react-router-dom';
 import appConfig from './configs/app.config';
 import { mockServer } from './mock/mock';
 import { ModalsProvider } from '@mantine/modals';
+import './index.css';
 
 export default function App() {
   /**
