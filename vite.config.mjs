@@ -4,7 +4,7 @@ import tsconfigPaths from 'vite-tsconfig-paths';
 
 export default defineConfig({
   plugins: [react(), tsconfigPaths()],
-  base:'/mantine-template/',
+  base:'/',
   test: {
     globals: true,
     environment: 'jsdom',
