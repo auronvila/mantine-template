@@ -10,7 +10,7 @@ export type AppConfig = {
 }
 
 const appConfig: AppConfig = {
-  layoutType: LayoutTypes.SimpleSideBar,
+  layoutType: LayoutTypes.CollapsibleAppShell,
   apiPrefix: '',
   authenticatedEntryPath: '/dashboard',
   unAuthenticatedEntryPath: '/sign-in',

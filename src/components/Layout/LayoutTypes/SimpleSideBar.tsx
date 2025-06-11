@@ -9,6 +9,7 @@ import SimpleSideBarBottomContent from '@/components/Layout/LayoutTypes/SimpleSi
 import { useTranslation } from 'react-i18next';
 import AuthorityCheck from '@/route/AuthorityCheck';
 import { useAppSelector } from '@/store';
+import { MantineLogo } from '@mantinex/mantine-logo';
 
 function SideBar() {
   const navigate = useNavigate();
@@ -78,7 +79,7 @@ function SideBar() {
     <nav className={classes.navbar}>
       <div className={classes.navbarMain}>
         <Group className={classes.header} justify="space-between">
-          <img className={classes.logo} alt={'Mantine Logo'} src={'/logo/logo-light-full.svg'} />
+          <MantineLogo type={'mark'} size={'9rem'} />
         </Group>
         {links}
       </div>

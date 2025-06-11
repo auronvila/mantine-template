@@ -1,5 +1,5 @@
-import type {NavigationTree} from '@/@types/navigation';
-import {IconDashboard, IconUser} from '@tabler/icons-react';
+import type { NavigationTree } from '@/@types/navigation';
+import { IconDashboard, IconUser } from '@tabler/icons-react';
 
 const navigationConfig: NavigationTree[] = [
   {
@@ -9,7 +9,7 @@ const navigationConfig: NavigationTree[] = [
     translateKey: '',
     icon: IconDashboard,
     authority: [],
-    subMenu: []
+    subMenu: [],
   },
   {
     key: 'users',
@@ -18,7 +18,7 @@ const navigationConfig: NavigationTree[] = [
     translateKey: '',
     icon: IconUser,
     authority: [],
-    subMenu: []
+    subMenu: [],
   },
 ];
 
