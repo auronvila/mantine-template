@@ -2448,6 +2448,18 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@mantinex/mantine-logo@npm:^2.0.0":
+  version: 2.0.0
+  resolution: "@mantinex/mantine-logo@npm:2.0.0"
+  peerDependencies:
+    "@mantine/core": ">=7.0.0"
+    "@mantine/hooks": ">=7.0.0"
+    react: ^18.x || ^19.x
+    react-dom: ^18.x || ^19.x
+  checksum: 10c0/7a8ae0812dfbd8b793941171450c937fa39b28c032567078c3a5b79b6f1e10f359bd150fd11edd5fb024fb0db4013767ec57c6aa7cbf71e81b7eb563f26c21ca
+  languageName: node
+  linkType: hard
+
 "@mdx-js/react@npm:^3.0.0":
   version: 3.0.1
   resolution: "@mdx-js/react@npm:3.0.1"
@@ -9782,6 +9794,7 @@ __metadata:
     "@mantine/form": "npm:^7.7.1"
     "@mantine/hooks": "npm:^7.7.1"
     "@mantine/modals": "npm:^7.15.1"
+    "@mantinex/mantine-logo": "npm:^2.0.0"
     "@reduxjs/toolkit": "npm:^2.2.3"
     "@storybook/addon-essentials": "npm:^8.0.0"
     "@storybook/addon-interactions": "npm:^8.0.0"

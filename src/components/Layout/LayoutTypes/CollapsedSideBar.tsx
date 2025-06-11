@@ -1,38 +1,40 @@
-import React, {useEffect, useState} from 'react';
-import {Card, Center, Stack} from '@mantine/core';
-import {
-  IconLogout,
-} from '@tabler/icons-react';
+import React, { useEffect, useState } from 'react';
+import { Card, Center, Stack } from '@mantine/core';
+import { IconLogout } from '@tabler/icons-react';
 import classes from './CollapsedSideBar.module.css';
-import navigationConfig from "@/configs/navigation.config";
-import {Link, useLocation, useNavigate} from "react-router-dom";
-import Views from "@/components/Layout/Views";
-import useAuth from "@/utils/hooks/useAuth";
-import CollapsedSideBarUserPopOver from "@/components/UserPopOver/CollapsedSideBarUserPopOver";
+import navigationConfig from '@/configs/navigation.config';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+import Views from '@/components/Layout/Views';
+import useAuth from '@/utils/hooks/useAuth';
+import CollapsedSideBarUserPopOver from '@/components/UserPopOver/CollapsedSideBarUserPopOver';
 import AuthorityCheck from '@/route/AuthorityCheck';
-import {useAppSelector} from "@/store";
+import { useAppSelector } from '@/store';
+import { MantineLogo } from '@mantinex/mantine-logo';
 
 function CollapsedSideBarBottomContent() {
-  const {signOut} = useAuth()
+  const { signOut } = useAuth();
   return (
     <div className={classes.linkWrapper}>
       <div className={classes.link}>
-        <CollapsedSideBarUserPopOver/>
+        <CollapsedSideBarUserPopOver />
       </div>
-      <div className={classes.link} onClick={() => {
-        signOut()
-      }}>
-        <IconLogout/>
+      <div
+        className={classes.link}
+        onClick={() => {
+          signOut();
+        }}
+      >
+        <IconLogout />
       </div>
     </div>
-  )
+  );
 }
 
 function CollapsedSideBarContent() {
   const [active, setActive] = useState('');
   const navigate = useNavigate();
   const location = useLocation();
-  const userAuthority = useAppSelector((state) => state.auth.user.role)
+  const userAuthority = useAppSelector((state) => state.auth.user.role);
 
   useEffect(() => {
     const currentPath = location.pathname.split('/')[1];
@@ -51,7 +53,7 @@ function CollapsedSideBarContent() {
           navigate(item.path);
         }}
       >
-        <item.icon className={classes.linkIcon} stroke={1.5}/>
+        <item.icon className={classes.linkIcon} stroke={1.5} />
       </Link>
     </AuthorityCheck>
   ));
@@ -59,36 +61,40 @@ function CollapsedSideBarContent() {
   return (
     <nav className={classes.navbar}>
       <Center>
-        <img className={classes.logo} alt={'Mantine Logo'} src={'/logo/logo-light-full.svg'}/>
+        <MantineLogo type={'mark'} size={'3rem'} />
       </Center>
       <div className={classes.navbarMain}>
         <Stack justify="center" gap={10}>
           {links}
         </Stack>
       </div>
-      <CollapsedSideBarBottomContent/>
+      <CollapsedSideBarBottomContent />
     </nav>
-  )
+  );
 }
 
 export default function CollapsedSideBar() {
   return (
     <>
-      <div style={{
-        display: 'flex',
-        flex: ' 1 1 auto',
-        backgroundColor: 'rgb(241,240,240)',
-      }}>
-        <CollapsedSideBarContent/>
-        <div style={{
-          padding: '2rem',
-          backgroundColor: '#ffffff',
-          flex: 1,
-          overflow: 'hidden',
+      <div
+        style={{
           display: 'flex',
-          flexDirection: 'column',
-          height: '100vh',
-        }}>
+          flex: ' 1 1 auto',
+          backgroundColor: 'rgb(241,240,240)',
+        }}
+      >
+        <CollapsedSideBarContent />
+        <div
+          style={{
+            padding: '2rem',
+            backgroundColor: '#ffffff',
+            flex: 1,
+            overflow: 'hidden',
+            display: 'flex',
+            flexDirection: 'column',
+            height: '100vh',
+          }}
+        >
           <Card
             style={{
               overflowY: 'auto',
@@ -100,11 +106,10 @@ export default function CollapsedSideBar() {
             withBorder
             p={40}
           >
-          <Views/>
+            <Views />
           </Card>
         </div>
       </div>
     </>
-  )
-
+  );
 }
