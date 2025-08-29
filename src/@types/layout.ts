@@ -5,6 +5,6 @@ export enum LayoutTypes {
   CollapsedSideBar,
 
   // MODERN
-  CollapsibleAppShell
-
+  CollapsibleAppShell,
+  Plain,
 }
