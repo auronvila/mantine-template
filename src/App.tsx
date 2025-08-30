@@ -1,4 +1,5 @@
 import '@mantine/core/styles.css';
+import '@mantine/notifications/styles.css';
 import { MantineProvider } from '@mantine/core';
 import { theme } from './theme';
 import { Layout } from '@/components/Layout/Layout';
@@ -10,6 +11,7 @@ import appConfig from './configs/app.config';
 import { mockServer } from './mock/mock';
 import { ModalsProvider } from '@mantine/modals';
 import './index.css';
+import { Notifications } from '@mantine/notifications';
 
 export default function App() {
   /**
@@ -26,6 +28,7 @@ export default function App() {
         <Provider store={store}>
           <PersistGate loading={null} persistor={persistor}>
             <BrowserRouter>
+              <Notifications />
               <Layout />
             </BrowserRouter>
           </PersistGate>

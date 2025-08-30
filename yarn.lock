@@ -2448,6 +2448,30 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@mantine/notifications@npm:^8.2.7":
+  version: 8.2.7
+  resolution: "@mantine/notifications@npm:8.2.7"
+  dependencies:
+    "@mantine/store": "npm:8.2.7"
+    react-transition-group: "npm:4.4.5"
+  peerDependencies:
+    "@mantine/core": 8.2.7
+    "@mantine/hooks": 8.2.7
+    react: ^18.x || ^19.x
+    react-dom: ^18.x || ^19.x
+  checksum: 10c0/d7a8874506420477ec4bcec847ceda86efdab05f2a84908f2f1ba17525b4d4485bc2c25d1598bb13b1a0c24059cec04ae9310d00cfd9efbc641439507b9db27d
+  languageName: node
+  linkType: hard
+
+"@mantine/store@npm:8.2.7":
+  version: 8.2.7
+  resolution: "@mantine/store@npm:8.2.7"
+  peerDependencies:
+    react: ^18.x || ^19.x
+  checksum: 10c0/d69374555c60b0aa35aa1519ffd7e95a66701c8b5838d27b49ad03017c8746195fcd426a51b8dee5a59819f1350fc1203e1743c6b878562d65e03d4f879ee281
+  languageName: node
+  linkType: hard
+
 "@mantinex/mantine-logo@npm:^2.0.0":
   version: 2.0.0
   resolution: "@mantinex/mantine-logo@npm:2.0.0"
@@ -9794,6 +9818,7 @@ __metadata:
     "@mantine/form": "npm:^7.7.1"
     "@mantine/hooks": "npm:^7.7.1"
     "@mantine/modals": "npm:^7.15.1"
+    "@mantine/notifications": "npm:^8.2.7"
     "@mantinex/mantine-logo": "npm:^2.0.0"
     "@reduxjs/toolkit": "npm:^2.2.3"
     "@storybook/addon-essentials": "npm:^8.0.0"
@@ -11475,7 +11500,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-transition-group@npm:^4.4.5":
+"react-transition-group@npm:4.4.5, react-transition-group@npm:^4.4.5":
   version: 4.4.5
   resolution: "react-transition-group@npm:4.4.5"
   dependencies:
