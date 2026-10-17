@@ -1,19 +1,20 @@
 export type SignInCredential = {
-  email: string
-  password: string
-}
+  email: string;
+  password: string;
+};
 
 export type ForgotPasswordReq = {
-  email: string
-}
+  email: string;
+};
 
 export interface SignInResponse {
-  id: string
-  fullName: string
-  authority:[]
-  phoneNumber: string
-  email: string
-  access_token: string
+  id: string;
+  fullName: string;
+  authority: string[];
+  phoneNumber: string;
+  email: string;
+  expires_in?: number;
+  access_token: string;
 }
 
 export interface ResponseInfoObject {
@@ -22,11 +23,10 @@ export interface ResponseInfoObject {
   message?: string;
 }
 
-export type SignUpResponse = SignInResponse
+export type SignUpResponse = SignInResponse;
 
 export type SignUpCredential = {
-  name: string
-  username: string
-  password: string
-}
-
+  name: string;
+  username: string;
+  password: string;
+};

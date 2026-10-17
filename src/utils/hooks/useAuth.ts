@@ -3,121 +3,99 @@ import {
   signInSuccess,
   signOutSuccess,
   useAppSelector,
-  useAppDispatch, setUserInfo, setUserId
-} from '@/store'
-import appConfig from '@/configs/app.config'
-import {REDIRECT_URL_KEY} from '@/constants/app.constant'
-import {useNavigate} from 'react-router-dom'
-import {SignInCredential, SignUpCredential} from '@/@types/auth'
-import {AuthService} from "@/services/auth/auth.service";
-import useQuery from './useQuery'
+  useAppDispatch,
+  setUserId,
+} from '@/store';
+import appConfig from '@/configs/app.config';
+import { REDIRECT_URL_KEY } from '@/constants/app.constant';
+import { useNavigate } from 'react-router-dom';
+import { SignInCredential } from '@/@types/auth';
+import { AuthService } from '@/services/auth/auth.service';
+import useQuery from './useQuery';
+import { useEffect } from 'react';
 
-type Status = 'success' | 'failed'
+type Status = 'success' | 'failed';
 
 function useAuth() {
-  const dispatch = useAppDispatch()
-  const navigate = useNavigate()
-  const {
-    token,
-    signedIn
-  } = useAppSelector((state) => state.auth.session)
-  const userId = useAppSelector(state => state.auth.userInfo.userId)
-  const query = useQuery()
+  const dispatch = useAppDispatch();
+  const navigate = useNavigate();
+  const { token, signedIn, expireTime } = useAppSelector((state) => state.auth.session);
+  const query = useQuery();
+
+  useEffect(() => {
+    if (!signedIn || expireTime <= 0) return;
+    let timeout: number;
+    const checkExpiry = () => {
+      const remaining = expireTime - Date.now();
+      if (remaining <= 0) {
+        dispatch(signOutSuccess());
+      } else {
+        timeout = window.setTimeout(checkExpiry, Math.min(remaining, 2147483647));
+      }
+    };
+    checkExpiry();
+    return () => window.clearTimeout(timeout);
+  }, [dispatch, signedIn, expireTime]);
 
   const signIn = async (
     values: SignInCredential
   ): Promise<
     | {
-    status: Status
-    message: string
-  }
+        status: Status;
+        message: string;
+      }
     | undefined
   > => {
     try {
-      const resp = await AuthService.signIn(values.email, values.password)
-      dispatch(setUserId(resp.id))
-      const {
-        access_token,
-        id,
-        email,
-        fullName,
-        phoneNumber
-      } = resp
-      dispatch(signInSuccess({
-        token: access_token,
-        refreshToken: '',
-        expireTime: 0
-      }))
+      const resp = await AuthService.signIn(values.email, values.password);
+      dispatch(setUserId(resp.id));
+      const { access_token, email, fullName, phoneNumber } = resp;
       dispatch(
-        setUser(
-          {
-            fullName: fullName,
-            email: email,
-            role: resp.authority,
-            phoneNumber: phoneNumber
-          }
-        )
-      )
-      const redirectUrl = query.get(REDIRECT_URL_KEY)
-      navigate(redirectUrl ? redirectUrl : appConfig.authenticatedEntryPath)
+        signInSuccess({
+          token: access_token,
+          refreshToken: '',
+          expireTime: resp.expires_in ? Date.now() + resp.expires_in * 1000 : 0,
+        })
+      );
+      dispatch(
+        setUser({
+          fullName: fullName,
+          email: email,
+          role: resp.authority,
+          phoneNumber: phoneNumber,
+        })
+      );
+      const redirectUrl = query.get(REDIRECT_URL_KEY);
+      navigate(redirectUrl ? redirectUrl : appConfig.authenticatedEntryPath);
       return {
         status: 'success',
-        message: ''
-      }
+        message: '',
+      };
     } catch (errors: any) {
       return {
         status: 'failed',
-        message: errors?.response?.data?.description || errors.toString()
-      }
+        message:
+          errors?.response?.data?.message ||
+          errors?.response?.data?.description ||
+          'Unable to sign in. Please try again.',
+      };
     }
-  }
-
-  const signUp = async (values: SignUpCredential) => {
-    // try {
-    //   await AuthService.signUp(values)
-    //   return {
-    //     status: 'success',
-    //     message: ''
-    //   }
-    //   // eslint-disable-next-line  @typescript-eslint/no-explicit-any
-    // } catch (errors: any) {
-    //   return {
-    //     status: 'failed',
-    //     message: errors?.response?.data?.description || errors.toString()
-    //   }
-    // }
-  }
+  };
 
   const handleSignOut = () => {
-    dispatch(signOutSuccess())
-    dispatch(setUserInfo({
-      googleLogin: false,
-      name: '',
-      role: '',
-      email: '',
-      userId: userId
-    }))
-    dispatch(
-      setUser({
-        fullName: '',
-        role: [],
-        email: ''
-      })
-    )
-    navigate(appConfig.unAuthenticatedEntryPath)
-  }
+    dispatch(signOutSuccess());
+    navigate(appConfig.unAuthenticatedEntryPath);
+  };
 
   const signOut = async () => {
-    // await apiSignOut()
-    handleSignOut()
-  }
+    handleSignOut();
+  };
 
   return {
-    authenticated: token && signedIn,
+    authenticated: Boolean(token && signedIn && (expireTime <= 0 || expireTime > Date.now())),
     signIn,
-    signUp,
     signOut,
-  }
+  };
 }
 
-export default useAuth
+export default useAuth;

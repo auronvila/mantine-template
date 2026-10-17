@@ -10,8 +10,10 @@ import { useTranslation } from 'react-i18next';
 import AuthorityCheck from '@/route/AuthorityCheck';
 import { useAppSelector } from '@/store';
 import { MantineLogo } from '@mantinex/mantine-logo';
+import { useDisclosure } from '@mantine/hooks';
 
 function SideBar() {
+  const [mobileOpened, { toggle: toggleMobile }] = useDisclosure();
   const navigate = useNavigate();
   const location = useLocation();
   const [active, setActive] = useState('');
@@ -42,6 +44,7 @@ function SideBar() {
         >
           <Box ml={10} my={10}>
           <LinksGroup
+            toggleMobile={toggleMobile}
             initiallyOpened={isAnyLinkActive}
             icon={item.icon}
             label={item.title}

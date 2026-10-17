@@ -26,7 +26,7 @@ Install deps and run the development server:
 ```bash
 yarn && yarn dev
 ```
-Open [http://localhost:5173](http://localhost:5173) with your browser to see the result.
+Open [http://localhost:5111](http://localhost:5111) with your browser to see the result.
 
 ## npm scripts
 
@@ -40,10 +40,10 @@ Open [http://localhost:5173](http://localhost:5173) with your browser to see the
 
 - `typecheck` – checks TypeScript types
 - `lint` – runs ESLint
-- `prettier:check` – checks files with Prettier
+- `prettier` – checks files with Prettier
 - `vitest` – runs vitest tests
 - `vitest:watch` – starts vitest watch
-- `test` – runs `vitest`, `prettier:check`, `lint` and `typecheck` scripts
+- `test` – runs `vitest`, `prettier`, `lint` and `typecheck` scripts
 
 ### Other scripts
 
@@ -61,3 +61,9 @@ You can check the wiki's for more detailed documentation on how to get the best 
 
 ## Contributions
 Any contribution is welcomed :).
+
+## Authentication and mock API
+
+The mock API runs only in development when `enableMock` is true. Demo credentials are prefilled on the sign-in page. Production uses the real API at `apiPrefix`; configure it before deploying.
+
+Sign-in expects an `access_token` and user profile with an `authority` array. An optional `expires_in` value (seconds) enables automatic session expiry. Token refresh is not implemented; expired sessions require signing in again. Sessions persist in localStorage, so backend authorization is required for every protected operation. An HttpOnly cookie session requires backend support and a corresponding client integration.

@@ -2369,7 +2369,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@mantine/charts@npm:^7.7.1":
+"@mantine/charts@npm:7.7.1":
   version: 7.7.1
   resolution: "@mantine/charts@npm:7.7.1"
   peerDependencies:
@@ -2382,7 +2382,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@mantine/core@npm:^7.7.1":
+"@mantine/core@npm:7.7.1":
   version: 7.7.1
   resolution: "@mantine/core@npm:7.7.1"
   dependencies:
@@ -2400,7 +2400,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@mantine/dates@npm:^7.7.1":
+"@mantine/dates@npm:7.7.1":
   version: 7.7.1
   resolution: "@mantine/dates@npm:7.7.1"
   dependencies:
@@ -2415,7 +2415,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@mantine/form@npm:^7.7.1":
+"@mantine/form@npm:7.7.1":
   version: 7.7.1
   resolution: "@mantine/form@npm:7.7.1"
   dependencies:
@@ -2427,7 +2427,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@mantine/hooks@npm:^7.7.1":
+"@mantine/hooks@npm:7.7.1":
   version: 7.7.1
   resolution: "@mantine/hooks@npm:7.7.1"
   peerDependencies:
@@ -2436,39 +2436,39 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@mantine/modals@npm:^7.15.1":
-  version: 7.15.1
-  resolution: "@mantine/modals@npm:7.15.1"
+"@mantine/modals@npm:7.7.1":
+  version: 7.7.1
+  resolution: "@mantine/modals@npm:7.7.1"
   peerDependencies:
-    "@mantine/core": 7.15.1
-    "@mantine/hooks": 7.15.1
-    react: ^18.x || ^19.x
-    react-dom: ^18.x || ^19.x
-  checksum: 10c0/cfb18bf84282a228dbf058569dd8f264749e0f892c4db0d7107d8bb4d6d56e9472558da68c3893c4b9e6f83c73d3c253e77d33172b0504edb631d2aeaa7d1ff5
+    "@mantine/core": 7.7.1
+    "@mantine/hooks": 7.7.1
+    react: ^18.2.0
+    react-dom: ^18.2.0
+  checksum: 10c0/f83a33eabdcb102eedc776947e2ce73a45f881c3c2f51611712e3162e683b665ebe2415983436fa6930e17463b90fe53a235873e060fbd6fdbee5864d33cbae1
   languageName: node
   linkType: hard
 
-"@mantine/notifications@npm:^8.2.7":
-  version: 8.2.7
-  resolution: "@mantine/notifications@npm:8.2.7"
+"@mantine/notifications@npm:7.7.1":
+  version: 7.7.1
+  resolution: "@mantine/notifications@npm:7.7.1"
   dependencies:
-    "@mantine/store": "npm:8.2.7"
+    "@mantine/store": "npm:7.7.1"
     react-transition-group: "npm:4.4.5"
   peerDependencies:
-    "@mantine/core": 8.2.7
-    "@mantine/hooks": 8.2.7
-    react: ^18.x || ^19.x
-    react-dom: ^18.x || ^19.x
-  checksum: 10c0/d7a8874506420477ec4bcec847ceda86efdab05f2a84908f2f1ba17525b4d4485bc2c25d1598bb13b1a0c24059cec04ae9310d00cfd9efbc641439507b9db27d
+    "@mantine/core": 7.7.1
+    "@mantine/hooks": 7.7.1
+    react: ^18.2.0
+    react-dom: ^18.2.0
+  checksum: 10c0/73eb52cbdcf56d7f9b26be8d7ea726788d6fd9fbeb83101130420c0a3d1e797c6ffd37afc0a06cf3b5b42dd8c673e50f5eee498a7fc9543f94a0f5f47df9954f
   languageName: node
   linkType: hard
 
-"@mantine/store@npm:8.2.7":
-  version: 8.2.7
-  resolution: "@mantine/store@npm:8.2.7"
+"@mantine/store@npm:7.7.1":
+  version: 7.7.1
+  resolution: "@mantine/store@npm:7.7.1"
   peerDependencies:
-    react: ^18.x || ^19.x
-  checksum: 10c0/d69374555c60b0aa35aa1519ffd7e95a66701c8b5838d27b49ad03017c8746195fcd426a51b8dee5a59819f1350fc1203e1743c6b878562d65e03d4f879ee281
+    react: ^18.2.0
+  checksum: 10c0/e88020fa12030f2d8565bc47ed491b942b418a5c6ef1f7fb4ad1836c63ba140f01fc757a9bdbe43c99f72c5c5ff92165a90b34f69635bd5db91b60a4a5512eb2
   languageName: node
   linkType: hard
 
@@ -9812,13 +9812,13 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "mantine-vite-template@workspace:."
   dependencies:
-    "@mantine/charts": "npm:^7.7.1"
-    "@mantine/core": "npm:^7.7.1"
-    "@mantine/dates": "npm:^7.7.1"
-    "@mantine/form": "npm:^7.7.1"
-    "@mantine/hooks": "npm:^7.7.1"
-    "@mantine/modals": "npm:^7.15.1"
-    "@mantine/notifications": "npm:^8.2.7"
+    "@mantine/charts": "npm:7.7.1"
+    "@mantine/core": "npm:7.7.1"
+    "@mantine/dates": "npm:7.7.1"
+    "@mantine/form": "npm:7.7.1"
+    "@mantine/hooks": "npm:7.7.1"
+    "@mantine/modals": "npm:7.7.1"
+    "@mantine/notifications": "npm:7.7.1"
     "@mantinex/mantine-logo": "npm:^2.0.0"
     "@reduxjs/toolkit": "npm:^2.2.3"
     "@storybook/addon-essentials": "npm:^8.0.0"

@@ -1,11 +1,11 @@
-import React, { lazy, Suspense, useMemo } from 'react';
+import React, { lazy, Suspense } from 'react';
 import useAuth from '@/utils/hooks/useAuth';
 import useLocale from '@/utils/hooks/useLocale';
 import LoadingScreen from '@/components/LoadingScreen/LoadingScreen';
 import { LayoutTypes } from '@/@types/layout';
 import { useAppSelector } from '@/store';
 
-const layouts: any = {
+const layouts: Record<LayoutTypes, React.LazyExoticComponent<React.ComponentType>> = {
   // LEGACY
   [LayoutTypes.SimpleSideBar]: lazy(() => import('./LayoutTypes/SimpleSideBar')),
   [LayoutTypes.DeckedSideBar]: lazy(() => import('./LayoutTypes/DeckedSideBar')),
@@ -15,18 +15,15 @@ const layouts: any = {
   [LayoutTypes.Plain]: lazy(() => import('./LayoutTypes/PlainLayout')),
 };
 
+const AuthLayout = lazy(() => import('./AuthLayout'));
+
 export function Layout() {
   const { authenticated } = useAuth();
   const layoutType = useAppSelector((state) => state.theme.currentLayout);
 
   useLocale();
 
-  const AppLayout = useMemo(() => {
-    if (authenticated) {
-      return layouts[layoutType];
-    }
-    return lazy(() => import('./AuthLayout'));
-  }, [authenticated]);
+  const AppLayout = authenticated ? layouts[layoutType] : AuthLayout;
 
   return (
     <Suspense

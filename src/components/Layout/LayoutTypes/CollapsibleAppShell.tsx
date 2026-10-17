@@ -10,7 +10,6 @@ import { useAppSelector } from '@/store';
 import { useTranslation } from 'react-i18next';
 import { MantineLogo } from '@mantinex/mantine-logo';
 import Views from '@/components/Layout/Views';
-import App from '@/App';
 import CollapsibleAppShellBottomContent from '@/components/Layout/LayoutTypes/CollapsibleAppShellBottomContent';
 
 export default function CollapsibleAppShell() {
@@ -41,6 +40,7 @@ export default function CollapsibleAppShell() {
         <AuthorityCheck userAuthority={userAuthority || []} authority={item.authority} key={index}>
           <Box ml={10} my={10}>
             <LinksGroup
+              toggleMobile={toggleMobile}
               initiallyOpened={isAnyLinkActive}
               icon={item.icon}
               label={item.title}
@@ -60,6 +60,7 @@ export default function CollapsibleAppShell() {
               event.preventDefault();
               setActive(item.path.split('/')[1]);
               navigate(item.path);
+              toggleMobile();
             }}
           >
             <item.icon className={classes.linkIcon} stroke={1.5} />
